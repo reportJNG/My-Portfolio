@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+.container {
+  padding: 30px 20px;
+  
+  font-family: 'Inter', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+}
+
+.title {
+  color: #8a2be2;
+  font-size: 2.4rem;
+  margin-bottom: 1rem;
+  position: relative;
+  text-align: center;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.title::after {
+  content: '';
+  display: block;
+  height: 3px;
+  width: 0%;
+  background: #8a2be2;
+  margin: 4px auto 0 auto;
+  transition: width 0.4s ease, margin-left 0.4s ease;
+}
+
+.title:hover::after {
+  width: 100%;
+  margin-left: 0;
+}
+
+.projectCard {
+  border: 2px solid violet;
+  border-radius: 20px;
+  padding: 30px 40px;
+  max-width: 600px;
+  width: 100%;
+  background-color: #1b1b1b;
+  color: white;
+  box-shadow: 0 0 30px rgba(162, 89, 255, 0.3);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  opacity: 0;
+  transform: translateY(50px);
+  animation: fadeUp 0.8s ease forwards;
+}
+
+.projectCard:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.projectCard:nth-child(3) {
+  animation-delay: 0.4s;
+}
+.projectCard:nth-child(4) {
+  animation-delay: 0.6s;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.projectName {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: #ffffff;
+}
+
+.projectDescription {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  color: #d3d3d3;
+}
+
+.btn {
+  background: linear-gradient(135deg, #a259ff, #7f38ff);
+  border: none;
+  color: white;
+  padding: 0.6rem 1.4rem;
+  font-size: 1rem;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease;
+  font-weight: 600;
+}
+
+.btn:hover {
+  transform: scale(1.07);
+  padding: 0.7rem 1.6rem;
+  box-shadow: 0 6px 24px rgba(162, 89, 255, 0.6);
+  cursor: pointer;
+}
+
+.centercontainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}

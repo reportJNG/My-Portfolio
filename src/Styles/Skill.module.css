@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+:root {
+  --violet: #8a2be2;
+  --bg: #fff;
+  --text: #1e1e1e;
+  --radius: 12px;
+  --shadow-hover: 0 0 12px var(--violet);
+}
+
+.bigcontainer {
+  font-family: 'Inter', sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  padding: 2rem;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Section titles */
+.language h1,
+.skill h1 {
+  position: relative;
+  color: var(--violet);
+  font-size: 1.6rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.language h1::after,
+.skill h1::after {
+  content: '';
+  display: block;
+  height: 3px;
+  width: 0%;
+  background: var(--violet);
+  margin: 4px auto 0 auto;
+  transition: width 0.4s ease, margin-left 0.4s ease;
+}
+
+.language h1:hover::after,
+.skill h1:hover::after {
+  width: 100%;
+  margin-left: 0;
+}
+
+/* Grid layout */
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+/* Skill/Language card */
+.container {
+  background-color: var(--bg);
+  border: 2px solid var(--violet);
+  border-radius: var(--radius);
+  padding: 1rem 1.25rem;
+  min-width: 180px;
+  max-width: 200px;
+  flex: 1 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.container:hover {
+  box-shadow: var(--shadow-hover);
+  cursor: pointer;
+  transform: translateY(-4px);
+}
+
+/* Icon style */
+.container i {
+  font-size: 1.6rem;
+  color: var(--violet);
+}
+
+/* Text inside card */
+.txt {
+  display: flex;
+  flex-direction: column;
+  font-size: 1rem;
+  color: var(--text);
+}
+
+.txt span:first-child {
+  font-weight: 600;
+}
+
+.txt span:last-child {
+  font-size: 0.8rem;
+  opacity: 0.7;
+}
+
+/* === Language Icon Colors === */
+.language .container:nth-child(1) i { color: #e34c26; }   /* HTML */
+.language .container:nth-child(2) i { color: #264de4; }   /* CSS */
+.language .container:nth-child(3) i { color: #f0db4f; }   /* JavaScript */
+.language .container:nth-child(4) i { color: #00758f; }   /* SQL (MySQL) */
+.language .container:nth-child(5) i { color: #8892be; }   /* PHP */
+.language .container:nth-child(6) i { color: #00599c; }   /* C++ */
+.language .container:nth-child(7) i { color: #003f8c; }   /* Pascal fallback */
+.language .container:nth-child(8) i { color: #61dafb; }   /* React */
+.language .container:nth-child(9) i { color: #68a063; }   /* Node.js */
+.language .container:nth-child(10) i { color: #4db33d; }  /* MongoDB */
+.language .container:nth-child(11) i { color: #3776ab; }  /* Python */
+.language .container:nth-child(12) i { color: #b07219; }  /* Java */
+.language .container:nth-child(13) i { color: #000080; }  /* Lua */
+
+/* === Skill Icon Colors === */
+.skill .container:nth-child(1) i { color: #d70a53; }      /* Debian */
+.skill .container:nth-child(2) i { color: #fbc02d; }      /* Linux Tools */
+.skill .container:nth-child(3) i { color: #00adef; }      /* Windows & Linux OS */
+.skill .container:nth-child(4) i { color: #0db7ed; }      /* Docker (backup) */
+.skill .container:nth-child(5) i { color: #1563ff; }      /* Vagrant */
+.skill .container:nth-child(6) i { color: #f1502f; }      /* Git */
+.skill .container:nth-child(7) i { color: #333; }         /* System Troubleshooting */
+.skill .container:nth-child(8) i { color: #4eaa25; }      /* Bash */
+.skill .container:nth-child(9) i { color: #1e1e1e; }      /* PC Cleanup */
+.skill .container:nth-child(10) i { color: #007acc; }     /* VS Code */
+.skill .container:nth-child(11) i { color: #009639; }     /* Nginx */

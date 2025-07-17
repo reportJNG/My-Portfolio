@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0px 20px;
+  flex-direction: column;
+  font-family: 'Poppins', sans-serif;
+  
+  
+}
+
+.box {
+  
+  border: 2px solid #a259ff;
+  box-shadow: 0 0 25px rgba(162, 89, 255, 0.35);
+  padding: 40px 30px;
+  max-width: 1000px;
+  width: 100%;
+  margin: 20px auto;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.box:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 40px rgba(162, 89, 255, 0.6);
+}
+
+.company {
+  font-size: 2.2rem;
+  color: #a259ff;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.role {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #473aa4;
+  margin-bottom: 10px;
+}
+
+.duration,
+.location {
+  display: block;
+  font-size: 1rem;
+  color: #f5e940;
+  margin: 6px 0;
+}
+
+.flag {
+  margin-right: 6px;
+  font-size: 1.1rem;
+}
+
+.experience {
+  margin-top: 25px;
+  font-size: 1.05rem;
+  color: #ffffff;
+  line-height: 1.7;
+  text-align: center;
+}
+
+.btn {
+  margin-top: 30px;
+  background: linear-gradient(145deg, #a259ff, #7c30e0);
+  color: white;
+  padding: 12px 28px;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.btn:hover {
+  transform: scale(1.06);
+  box-shadow: 0 0 20px rgba(162, 89, 255, 0.4);
+  background: linear-gradient(145deg, #8f44ff, #6a28d4);
+}

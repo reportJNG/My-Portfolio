@@ -1,0 +1,144 @@
+* {
+  box-sizing: border-box;
+}
+.topNav {
+  /* No position = behaves like normal content */
+  width: 100%;
+  z-index: 1000;
+  background-color: #000000;
+  padding: 0.8rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
+  font-family: 'Montserrat', sans-serif;
+}
+
+
+/* 🔹 Developer name: RX HAMZA (RGB animated letters) */
+.name {
+  display: inline-block;
+  cursor: pointer;
+  font-size: 1.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  user-select: none;
+}
+
+/* 🔹 Each letter styled individually */
+.nameLetter {
+  display: inline-block;
+  color: #ffffff;
+  transition: color 0.3s ease;
+}
+
+/* 🔹 Looping RGB wave while hovering */
+.name:hover .nameLetter:nth-child(1) {
+  animation: rgbBasicWave 1s ease infinite;
+  animation-delay: 0s;
+}
+.name:hover .nameLetter:nth-child(2) {
+  animation: rgbBasicWave 1s ease infinite;
+  animation-delay: 0.1s;
+}
+.name:hover .nameLetter:nth-child(3) {
+  animation: rgbBasicWave 1s ease infinite;
+  animation-delay: 0.2s;
+}
+.name:hover .nameLetter:nth-child(4) {
+  animation: rgbBasicWave 1s ease infinite;
+  animation-delay: 0.3s;
+}
+.name:hover .nameLetter:nth-child(5) {
+  animation: rgbBasicWave 1s ease infinite;
+  animation-delay: 0.4s;
+}
+.name:hover .nameLetter:nth-child(6) {
+  animation: rgbBasicWave 1s ease infinite;
+  animation-delay: 0.5s;
+}
+.name:hover .nameLetter:nth-child(7) {
+  animation: rgbBasicWave 1s ease infinite;
+  animation-delay: 0.6s;
+}
+.name:hover .nameLetter:nth-child(8) {
+  animation: rgbBasicWave 1s ease infinite;
+  animation-delay: 0.7s;
+}
+
+/* 🔹 RGB wave keyframes — Red → Green → Blue */
+@keyframes rgbBasicWave {
+  0%   { color: #ffffff; }
+  33%  { color: red; }
+  66%  { color: lime; }
+  100% { color: blue; }
+}
+
+/* 🔹 Navigation links list */
+.navList {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+}
+
+/* 🔹 Each nav link */
+.navLink {
+  color: #ffffffcc;
+  text-decoration: none;
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  position: relative;
+  transition: all 0.25s ease;
+  padding: 0.25rem 0;
+}
+
+/* 🔹 Violet underline from center */
+.navLink::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 2px;
+  width: 0%;
+  background-color: violet;
+  transition: width 0.3s ease-in-out;
+}
+
+/* 🔹 Hover effect: color brightens + underline appears */
+.navLink:hover {
+  color: #ffffff;
+  text-shadow: 0 0 6px rgba(255, 255, 255, 0.4);
+}
+
+.navLink:hover::after {
+  width: 100%;
+}
+
+/* 🔹 Mobile responsiveness */
+@media (max-width: 768px) {
+  .topNav {
+    padding: 0.8rem 1rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .navList {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .name {
+    font-size: 1.3rem;
+  }
+
+  .navLink {
+    font-size: 0.95rem;
+  }
+}

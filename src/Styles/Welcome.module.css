@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap');
+
+/* Main full-screen layout */
+.typingContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Outfit', sans-serif;
+margin-top: 2rem;
+  
+  color: #fff;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+/* First line static text */
+.staticText {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #dddddd;
+  margin: 0 0 10px 0;
+}
+
+/* Second line typed text */
+.typedText {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #ffffff;
+  text-shadow: 0 0 6px rgba(255, 255, 255, 0.6);
+  margin: 0;
+}
+
+/* Violet blinking cursor */
+.cursor::after {
+  content: "|";
+  display: inline-block;
+  margin-left: 4px;
+  animation: blink 1s step-end infinite;
+  color: #a259ff;
+  font-weight: bold;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 1; }
+}
+
+/* Centered big glowing image */
+.monkeyImageWrapper {
+  margin-top: 40px;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 0 25px #a259ff;
+  border: 5px solid #a259ff;
+  transition: transform 0.3s ease;
+}
+
+.monkeyImageWrapper:hover {
+  transform: scale(1.05);
+}
+
+.monkeyImageWrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
