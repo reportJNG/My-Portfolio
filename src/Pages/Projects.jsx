@@ -2,24 +2,30 @@ import styles from '../Styles/Projects.module.css';
 
 export default function Projects() {
     const projects = [
-        {
-          name: '💻 Portfolio Website',
-          description: 'A responsive React portfolio showcasing my skills, animation, and smooth scroll SPA layout.',
-          buttonText: 'View Live',
-          link: 'https://your-portfolio.com',
-        },
-        {
-          name: '📦 E-Commerce Store',
-          description: 'Full-stack MERN app with product catalog, cart, Stripe checkout, and admin dashboard.',
-          buttonText: 'View GitHub',
-          link: 'https://github.com/yourusername/ecommerce-store',
-        },
-        {
-          name: '🛠️ Task Manager App',
-          description: 'A simple to-do and productivity app with React + Node.js, MongoDB backend, and auth.',
-          buttonText: 'View Code',
-          link: 'https://github.com/yourusername/task-manager',
-        },
+      {
+        name: '🏦 Bank App',
+        description: 'A full-stack enterprise-level bank app with separate user and admin interfaces for secure and efficient financial operations.',
+        buttonText: 'View Live',
+        link: 'https://bank-eight-woad.vercel.app/',
+      },
+      {
+        name: '🎲 Dice Game vs Bot',
+        description: 'A fully interactive web-based dice game with smooth animations, where players roll dice against a smart bot opponent.',
+        buttonText: 'Play Now',
+        link: 'https://dice-web-game.vercel.app/',
+      },
+      {
+        name: '🔐 Smart Password Generator',
+        description: 'A powerful password generator with secure saving, custom naming, and access to previously used passwords for account management.',
+        buttonText: 'Try Now',
+        link: 'https://password-generator-tan-iota.vercel.app/',
+      },
+      {
+        name: '🛍️ Enterprise Shop Manager',
+        description: 'A high-level shop management system with user dashboards, employee hiring/firing, daily workflow tracking, money management, and premium features for large-scale stores.',
+        buttonText: 'Explore App',
+        link: 'https://your-shop-manager.com',
+      },
       ];
   return (
     <div className={styles.container}>
