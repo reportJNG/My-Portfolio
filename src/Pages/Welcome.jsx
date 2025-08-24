@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import styles from "../Styles/Welcome.module.css";
-import monkey from "../assets/monkey.jpg"
+import monkey from "../assets/me.jpeg"
 export default function Welcome() {
   const messages = [
     "Crafting Full-Stack Experiences",
