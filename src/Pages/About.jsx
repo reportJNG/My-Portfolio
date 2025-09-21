@@ -8,7 +8,7 @@ export default function About() {
 
         <div className={styles["info-block"]}>
           <strong>Age</strong>
-          <span>19 Years</span>
+          <span>20 Years</span>
         </div>
 
         <div className={styles["info-block"]}>
