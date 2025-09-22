@@ -26,6 +26,19 @@ export default function Projects() {
         buttonText: 'Explore App',
         link: 'https://your-shop-manager.com',
       },
+      {
+        name: '🌐 Discord Community Site',
+        description: 'A modern website built to showcase our Discord server, featuring event announcements, community highlights, and a direct invite link for users to join and participate.',
+        buttonText: 'Visit Site',
+        link: 'https://algerian-discored.vercel.app/',
+      },
+      {
+        name: '🎮 Guess the Word Game',
+        description: 'An interactive word-guessing game where players challenge their vocabulary skills to uncover the hidden word through clues and logic.',
+        buttonText: 'Play Now',
+        link: 'https://abrain.vercel.app/',
+      },
+      
       ];
   return (
     <div className={styles.container}>
