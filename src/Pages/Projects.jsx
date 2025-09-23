@@ -37,7 +37,19 @@ export default function Projects() {
         description: 'An interactive word-guessing game where players challenge their vocabulary skills to uncover the hidden word through clues and logic.',
         buttonText: 'Play Now',
         link: 'https://abrain.vercel.app/',
+      },{
+        name: '🍽️ Syrian Delights',
+        description: 'A modern web experience showcasing authentic Syrian cuisine, menus, and reviews — bringing the rich flavors of Syria right to your screen.',
+        buttonText: 'View Menu',
+        link: 'https://syrien.vercel.app/',
       },
+      {
+        name: '🥩 Meet & Meat',
+        description: 'A premium meat and BBQ restaurant website with smoky vibes, menu highlights, and location details for a true carnivore’s experience.',
+        buttonText: 'Explore',
+        link: 'https://meat-meet.vercel.app/',
+      },
+      
       
       ];
   return (
