@@ -47,7 +47,7 @@ export default function Projects() {
         name: '🥩 Meet & Meat',
         description: 'A premium meat and BBQ restaurant website with smoky vibes, menu highlights, and location details for a true carnivore’s experience.',
         buttonText: 'Explore',
-        link: 'https://meat-meet.vercel.app/',
+        link: 'https://meet-meat-alg.vercel.app/',
       },
       
       
