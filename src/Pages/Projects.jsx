@@ -33,6 +33,12 @@ export default function Projects() {
         link: 'https://algerian-discored.vercel.app/',
       },
       {
+         name: '📝 NotePad',
+        description: 'A simple, modern, and distraction-free notepad app. Create, organize, and save notes easily, with a sidebar to view all your files and quick access to editing.',
+        buttonText: 'Try it',
+        link: 'https://notepad-azure-xi.vercel.app//'
+      },
+      {
         name: '🎮 Guess the Word Game',
         description: 'An interactive word-guessing game where players challenge their vocabulary skills to uncover the hidden word through clues and logic.',
         buttonText: 'Play Now',
