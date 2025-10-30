@@ -24,7 +24,7 @@ export default function Projects() {
         name: '🛍️ Enterprise Shop Manager',
         description: 'A high-level shop management system with user dashboards, employee hiring/firing, daily workflow tracking, money management, and premium features for large-scale stores.',
         buttonText: 'Explore App',
-        link: 'https://your-shop-manager.com',
+        link: 'https://shop-manager-x3o9.vercel.app/',
       },
       {
         name: '🌐 Discord Community Site',
