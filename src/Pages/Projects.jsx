@@ -55,6 +55,26 @@ export default function Projects() {
         buttonText: 'Explore',
         link: 'https://meet-meat-alg.vercel.app/',
       },
+      {
+       name: '🔢 Counter App',
+        description: 'A simple yet smooth counter application featuring increment, decrement, and reset functions with clean UI and fast interactions.',
+      buttonText: 'Explore',
+       link: 'https://timer-conter.vercel.app/',
+},
+{
+  name: '📝 To-Do App',
+  description: 'A productivity-focused to-do list app with task creation, completion tracking, and a clean modern interface to stay organized.',
+  buttonText: 'Explore',
+  link: 'https://to-do-app-puce-three.vercel.app/',
+},
+
+{
+  name: '🎮 Mini Games',
+  description: 'A fun collection of lightweight mini-games including puzzles, reaction tests, and skill challenges — all playable in the browser.',
+  buttonText: 'Explore',
+  link: 'https://mini-games-h.vercel.app/',
+},
+
       
       
       ];
