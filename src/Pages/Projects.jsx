@@ -78,7 +78,7 @@ export default function Projects() {
   name: '☀️ Weather App',
   description: 'A clean and modern weather app providing real-time forecasts, temperature details, and location-based weather updates.',
   buttonText: 'Explore',
-  link: 'dev-weather-hamza.vercel.app',
+  link: 'https://dev-weather-hamza.vercel.app/',
 },
 
       
