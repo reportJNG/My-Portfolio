@@ -80,6 +80,12 @@ export default function Projects() {
   buttonText: 'Explore',
   link: 'https://dev-weather-hamza.vercel.app/',
 },
+{
+  name: '😂 Jokes Generator',
+  description: 'A fun and lighthearted app that delivers random jokes to brighten your day, with categories and shareable options.',
+  buttonText: 'Laugh Now',
+  link: 'https://joke-gen-ten.vercel.app/',
+}
 
       
       
