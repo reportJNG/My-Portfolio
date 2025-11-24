@@ -74,6 +74,12 @@ export default function Projects() {
   buttonText: 'Explore',
   link: 'https://mini-games-h.vercel.app/',
 },
+{
+  name: '☀️ Weather App',
+  description: 'A clean and modern weather app providing real-time forecasts, temperature details, and location-based weather updates.',
+  buttonText: 'Explore',
+  link: 'dev-weather-hamza.vercel.app',
+},
 
       
       
