@@ -105,20 +105,19 @@ export default function Projects() {
       
       ];
   return (
-    <div className={styles.container}>
+   <div className={styles.container}>
       <h2 className={styles.title}>My Projects</h2>
-            {projects.map((p,i)=> 
-            <div className={styles.projectCard} key={i}>
-        <h3 className={styles.projectName}>{p.name}</h3>
-        <div className={styles.centercontainer}>
-          <p className={styles.projectDescription}>
-           {p.description}
-          </p>
-          <a href={p.link}>
-          <button className={styles.btn}>{p.buttonText}</button></a>
+      <div className={styles.projects}>{projects.map((p, i) => (
+        <div className={styles.projectCard} key={i}>
+          <h3 className={styles.projectName}>{p.name}</h3>
+          <div className={styles.centercontainer}>
+            <p className={styles.projectDescription}>{p.description}</p>
+            <a href={p.link}>
+              <button className={styles.btn}>{p.buttonText}</button>
+            </a>
+          </div>
         </div>
-      </div>
-             )}
+      ))}</div>
     </div>
   );
 }

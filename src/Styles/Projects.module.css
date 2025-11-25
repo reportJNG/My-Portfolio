@@ -2,23 +2,19 @@
 
 .container {
   padding: 30px 20px;
-  
   font-family: 'Inter', sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 3rem;
+  gap: 2rem;
 }
 
 .title {
   color: #8a2be2;
   font-size: 2.4rem;
-  margin-bottom: 1rem;
-  position: relative;
   text-align: center;
-  width: fit-content;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0;
+  position: relative;
 }
 
 .title::after {
@@ -36,12 +32,21 @@
   margin-left: 0;
 }
 
+/* Cards wrapper - responsive horizontal layout */
+.projects {
+  display: flex;
+  flex-wrap: wrap;           /* Wrap cards to next row if needed */
+  justify-content: center;   /* Center cards horizontally */
+  gap: 2rem;                 /* Space between cards */
+  width: 100%;
+  max-width: 1200px;         /* Limit total width for big screens */
+}
+
 .projectCard {
   border: 2px solid violet;
   border-radius: 20px;
   padding: 30px 40px;
-  max-width: 600px;
-  width: 100%;
+  width: 300px;              /* Fixed card width to allow multiple per row */
   background-color: #1b1b1b;
   color: white;
   box-shadow: 0 0 30px rgba(162, 89, 255, 0.3);
@@ -51,15 +56,11 @@
   animation: fadeUp 0.8s ease forwards;
 }
 
-.projectCard:nth-child(2) {
-  animation-delay: 0.2s;
-}
-.projectCard:nth-child(3) {
-  animation-delay: 0.4s;
-}
-.projectCard:nth-child(4) {
-  animation-delay: 0.6s;
-}
+.projectCard:nth-child(1) { animation-delay: 0s; }
+.projectCard:nth-child(2) { animation-delay: 0.1s; }
+.projectCard:nth-child(3) { animation-delay: 0.2s; }
+.projectCard:nth-child(4) { animation-delay: 0.3s; }
+/* Continue as needed */
 
 @keyframes fadeUp {
   to {
@@ -97,11 +98,17 @@
   transform: scale(1.07);
   padding: 0.7rem 1.6rem;
   box-shadow: 0 6px 24px rgba(162, 89, 255, 0.6);
-  cursor: pointer;
 }
 
 .centercontainer {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .projectCard {
+    width: 90%;              /* On mobile, cards fill almost full width */
+  }
 }
