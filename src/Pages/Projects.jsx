@@ -98,6 +98,12 @@ export default function Projects() {
   buttonText: 'Make Me Laugh',
   link: 'https://joke-gen-ten.vercel.app/',
 }
+,{
+  name: '🌍 World Explorer',
+  description: 'Discover detailed information about every country in the world. View flags, capitals, population, languages, currencies, timezones, and explore locations directly on Google Maps. Perfect for learning, traveling, or just exploring the globe!',
+  buttonText: 'Start Exploring',
+  link: 'https://world-info-omega.vercel.app/',
+}
 
 
 
