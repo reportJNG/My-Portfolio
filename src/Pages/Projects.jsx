@@ -85,7 +85,20 @@ export default function Projects() {
   description: 'A cute and fun app that fetches random cat images to brighten your day. Click to get a new cat whenever you like!',
   buttonText: 'Meow!',
   link: 'https://cats-gen.vercel.app/',
+},
+{
+  name: '💬 Quote of the Day',
+  description: 'A simple and inspiring app that fetches a random quote every time. Get daily motivation or wisdom at a click of a button!',
+  buttonText: 'Inspire Me',
+  link: 'https://quote-day.vercel.app/',
+},
+{
+  name: '😂 Random Jokes',
+  description: 'Need a laugh? This app fetches random jokes from the internet. Click the button to brighten your day with a new joke every time!',
+  buttonText: 'Make Me Laugh',
+  link: 'https://joke-gen-ten.vercel.app/',
 }
+
 
 
       
