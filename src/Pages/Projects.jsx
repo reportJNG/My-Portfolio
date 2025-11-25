@@ -81,11 +81,12 @@ export default function Projects() {
   link: 'https://dev-weather-hamza.vercel.app/',
 },
 {
-  name: '😂 Jokes Generator',
-  description: 'A fun and lighthearted app that delivers random jokes to brighten your day, with categories and shareable options.',
-  buttonText: 'Laugh Now',
-  link: 'https://joke-gen-ten.vercel.app/',
+  name: '🐱 Cat Image Generator',
+  description: 'A cute and fun app that fetches random cat images to brighten your day. Click to get a new cat whenever you like!',
+  buttonText: 'Meow!',
+  link: 'https://cats-gen.vercel.app/',
 }
+
 
       
       
