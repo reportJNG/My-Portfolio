@@ -103,7 +103,14 @@ export default function Projects() {
   description: 'Discover detailed information about every country in the world. View flags, capitals, population, languages, currencies, timezones, and explore locations directly on Google Maps. Perfect for learning, traveling, or just exploring the globe!',
   buttonText: 'Start Exploring',
   link: 'https://world-info-omega.vercel.app/',
+},
+{
+  "name": "🚀 NASA Space Explorer",
+  "description": "Explore stunning NASA Astronomy Pictures of the Day (APOD). View high-definition space images, read detailed explanations, and get inspired by the universe. Refresh to discover a new random cosmic image each time!",
+  "buttonText": "See the Cosmos",
+  "link": "https://nasa-app-omega-nine.vercel.app/"
 }
+
 
 
 
