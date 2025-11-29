@@ -105,11 +105,13 @@ export default function Projects() {
   link: 'https://world-info-omega.vercel.app/',
 },
 {
-  "name": "🚀 NASA Space Explorer",
-  "description": "Explore stunning NASA Astronomy Pictures of the Day (APOD). View high-definition space images, read detailed explanations, and get inspired by the universe. Refresh to discover a new random cosmic image each time!",
-  "buttonText": "See the Cosmos",
-  "link": "https://nasa-app-omega-nine.vercel.app/"
-}
+  "name": "👤 Random User Explorer",
+  "description": "Meet new people from around the world! Fetch random user profiles with details like name, gender, email, phone, and location. Click to generate a fresh random person every time using the RandomUser.me API.",
+  "buttonText": "Generate User",
+  "link": "https://get-alot-random-users.vercel.app/"
+
+},
+
 
 
 
