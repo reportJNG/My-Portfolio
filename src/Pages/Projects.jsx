@@ -112,6 +112,12 @@ export default function Projects() {
 
 },
 
+{
+  "name": "💸 Swift Money Transfer",
+  "description": "Send money instantly and securely! Enter an amount, choose a recipient, and process fast transactions with real-time status updates. Built with Next.js & TypeScript for smooth and safe money movement.",
+  "buttonText": "Count Money",
+  "link": "https://transfer-money-two.vercel.app/"
+}
 
 
 
