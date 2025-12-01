@@ -125,6 +125,13 @@ export default function Projects() {
   "buttonText": "Generate Email",
   "link": "https://random-free-email.vercel.app/"
 }
+,
+{
+  "name": "⚔️ Pokémon Battle Mini",
+  "description": "Play a fun mini Pokémon battle game! Choose your card by luck, fight against a bot, and see who wins. Built with Next.js & TypeScript for smooth gameplay and a responsive UI.",
+  "buttonText": "Start Playing",
+  "link": "https://pokemon-battel.vercel.app/"
+}
 
 
 
