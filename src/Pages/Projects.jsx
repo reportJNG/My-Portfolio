@@ -118,6 +118,13 @@ export default function Projects() {
   "buttonText": "Count Money",
   "link": "https://transfer-money-two.vercel.app/"
 }
+,
+{
+  "name": "📧 Random Email Generator",
+  "description": "Generate free random emails instantly! Copy them with one click and use for testing, signups, or temporary accounts. Built with Next.js & TypeScript for a smooth, modern experience.",
+  "buttonText": "Generate Email",
+  "link": "https://random-free-email.vercel.app/"
+}
 
 
 
