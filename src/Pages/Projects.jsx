@@ -132,6 +132,13 @@ export default function Projects() {
   "buttonText": "Start Playing",
   "link": "https://pokemon-battel.vercel.app/"
 }
+,
+{
+  "name": "🕵️‍♂️ Guess Name",
+  "description": "Enter a name and let the app guess the person's age, gender, and nationality using free APIs. Fun and interactive, with audio feedback while loading.",
+  "buttonText": "Guess Now",
+  "link": "https://geuss-who.vercel.app/"
+}
 
 
 
