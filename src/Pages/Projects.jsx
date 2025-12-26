@@ -138,7 +138,13 @@ export default function Projects() {
   "description": "Enter a name and let the app guess the person's age, gender, and nationality using free APIs. Fun and interactive, with audio feedback while loading.",
   "buttonText": "Guess Now",
   "link": "https://geuss-who.vercel.app/"
-}
+},
+{
+  "name": "🛍️ E-Clothes",
+  "description": "Shop the latest fashion trends online! Browse a wide range of clothing, accessories, and more. Easy checkout, fast delivery, and secure payment.",
+  "buttonText": "Shop Now",
+  "link": 'https://e-commerce-shop-seven-pearl.vercel.app/'}
+
 
 
 
