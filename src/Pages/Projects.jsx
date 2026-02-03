@@ -3,174 +3,179 @@ import styles from "../Styles/Projects.module.css";
 export default function Projects() {
   const projects = [
     {
-      name: "🏦 Bank App",
+      name: "🚗 Mobilis Fleet Manager",
       description:
-        "A full-stack enterprise-level bank app with separate user and admin interfaces for secure and efficient financial operations.",
+        "Enterprise vehicle fleet management system. Track vehicles, schedule maintenance, assign drivers, and generate comprehensive reports with real-time monitoring.",
+      buttonText: "Manage Fleet",
+      link: "https://mobilis-gestion-du-parc-automobile.vercel.app/",
+    },
+    {
+      name: "🏦 Enterprise Banking",
+      description:
+        "Full-stack banking platform with dual interfaces for users and admins. Manage accounts, process transactions, and handle secure financial operations at scale.",
       buttonText: "View Live",
       link: "https://bank-eight-woad.vercel.app/",
     },
     {
-      name: "🎲 Dice Game vs Bot",
+      name: "🛍️ Shop Manager Pro",
       description:
-        "A fully interactive web-based dice game with smooth animations, where players roll dice against a smart bot opponent.",
-      buttonText: "Play Now",
-      link: "https://dice-web-game.vercel.app/",
-    },
-    {
-      name: "🔐 Smart Password Generator",
-      description:
-        "A powerful password generator with secure saving, custom naming, and access to previously used passwords for account management.",
-      buttonText: "Try Now",
-      link: "https://password-generator-tan-iota.vercel.app/",
-    },
-    {
-      name: "🛍️ Enterprise Shop Manager",
-      description:
-        "A high-level shop management system with user dashboards, employee hiring/firing, daily workflow tracking, money management, and premium features for large-scale stores.",
+        "Complete shop management solution with employee tracking, inventory control, daily workflows, financial reports, and premium features for enterprise stores.",
       buttonText: "Explore App",
       link: "https://shop-manager-x3o9.vercel.app/",
     },
     {
-      name: "🌐 Discord Community Site",
+      name: "🛒 E-Clothes Store",
       description:
-        "A modern website built to showcase our Discord server, featuring event announcements, community highlights, and a direct invite link for users to join and participate.",
-      buttonText: "Visit Site",
-      link: "https://algerian-discored.vercel.app/",
-    },
-    {
-      name: "📝 NotePad",
-      description:
-        "A simple, modern, and distraction-free notepad app. Create, organize, and save notes easily, with a sidebar to view all your files and quick access to editing.",
-      buttonText: "Try it",
-      link: "https://notepad-azure-xi.vercel.app//",
-    },
-    {
-      name: "🎮 Guess the Word Game",
-      description:
-        "An interactive word-guessing game where players challenge their vocabulary skills to uncover the hidden word through clues and logic.",
-      buttonText: "Play Now",
-      link: "https://abrain.vercel.app/",
-    },
-    {
-      name: "🍽️ Syrian Delights",
-      description:
-        "A modern web experience showcasing authentic Syrian cuisine, menus, and reviews — bringing the rich flavors of Syria right to your screen.",
-      buttonText: "View Menu",
-      link: "https://syrien.vercel.app/",
-    },
-    {
-      name: "🥩 Meet & Meat",
-      description:
-        "A premium meat and BBQ restaurant website with smoky vibes, menu highlights, and location details for a true carnivore’s experience.",
-      buttonText: "Explore",
-      link: "https://meet-meat-alg.vercel.app/",
-    },
-    {
-      name: "🔢 Counter App",
-      description:
-        "A simple yet smooth counter application featuring increment, decrement, and reset functions with clean UI and fast interactions.",
-      buttonText: "Explore",
-      link: "https://timer-conter.vercel.app/",
-    },
-    {
-      name: "📝 To-Do App",
-      description:
-        "A productivity-focused to-do list app with task creation, completion tracking, and a clean modern interface to stay organized.",
-      buttonText: "Explore",
-      link: "https://to-do-app-puce-three.vercel.app/",
-    },
-
-    {
-      name: "🎮 Mini Games",
-      description:
-        "A fun collection of lightweight mini-games including puzzles, reaction tests, and skill challenges — all playable in the browser.",
-      buttonText: "Explore",
-      link: "https://mini-games-h.vercel.app/",
-    },
-    {
-      name: "☀️ Weather App",
-      description:
-        "A clean and modern weather app providing real-time forecasts, temperature details, and location-based weather updates.",
-      buttonText: "Explore",
-      link: "https://dev-weather-hamza.vercel.app/",
-    },
-    {
-      name: "🐱 Cat Image Generator",
-      description:
-        "A cute and fun app that fetches random cat images to brighten your day. Click to get a new cat whenever you like!",
-      buttonText: "Meow!",
-      link: "https://cats-gen.vercel.app/",
-    },
-    {
-      name: "💬 Quote of the Day",
-      description:
-        "A simple and inspiring app that fetches a random quote every time. Get daily motivation or wisdom at a click of a button!",
-      buttonText: "Inspire Me",
-      link: "https://quote-day.vercel.app/",
-    },
-    {
-      name: "😂 Random Jokes",
-      description:
-        "Need a laugh? This app fetches random jokes from the internet. Click the button to brighten your day with a new joke every time!",
-      buttonText: "Make Me Laugh",
-      link: "https://joke-gen-ten.vercel.app/",
-    },
-    {
-      name: "🌍 World Explorer",
-      description:
-        "Discover detailed information about every country in the world. View flags, capitals, population, languages, currencies, timezones, and explore locations directly on Google Maps. Perfect for learning, traveling, or just exploring the globe!",
-      buttonText: "Start Exploring",
-      link: "https://world-info-omega.vercel.app/",
-    },
-    {
-      name: "👤 Random User Explorer",
-      description:
-        "Meet new people from around the world! Fetch random user profiles with details like name, gender, email, phone, and location. Click to generate a fresh random person every time using the RandomUser.me API.",
-      buttonText: "Generate User",
-      link: "https://get-alot-random-users.vercel.app/",
-    },
-
-    {
-      name: "💸 Swift Money Transfer",
-      description:
-        "Send money instantly and securely! Enter an amount, choose a recipient, and process fast transactions with real-time status updates. Built with Next.js & TypeScript for smooth and safe money movement.",
-      buttonText: "Count Money",
-      link: "https://transfer-money-two.vercel.app/",
-    },
-    {
-      name: "📧 Random Email Generator",
-      description:
-        "Generate free random emails instantly! Copy them with one click and use for testing, signups, or temporary accounts. Built with Next.js & TypeScript for a smooth, modern experience.",
-      buttonText: "Generate Email",
-      link: "https://random-free-email.vercel.app/",
-    },
-    {
-      name: "⚔️ Pokémon Battle Mini",
-      description:
-        "Play a fun mini Pokémon battle game! Choose your card by luck, fight against a bot, and see who wins. Built with Next.js & TypeScript for smooth gameplay and a responsive UI.",
-      buttonText: "Start Playing",
-      link: "https://pokemon-battel.vercel.app/",
-    },
-    {
-      name: "🕵️‍♂️ Guess Name",
-      description:
-        "Enter a name and let the app guess the person's age, gender, and nationality using free APIs. Fun and interactive, with audio feedback while loading.",
-      buttonText: "Guess Now",
-      link: "https://geuss-who.vercel.app/",
-    },
-    {
-      name: "🛍️ E-Clothes",
-      description:
-        "Shop the latest fashion trends online! Browse a wide range of clothing, accessories, and more. Easy checkout, fast delivery, and secure payment.",
+        "Modern e-commerce platform for fashion. Browse clothing and accessories, secure checkout, cart management, and seamless shopping experience.",
       buttonText: "Shop Now",
       link: "https://e-commerce-shop-seven-pearl.vercel.app/",
     },
     {
       name: "🎮 Equation Calc Game",
       description:
-        "Challenge yourself with equation calculations across multiple levels! Test your math skills in this engaging Next.js game featuring custom levels, background music, and special challenges for advanced players.",
+        "Math challenge game with 50+ levels, background music, and progressive difficulty. Test your calculation skills and unlock special challenges.",
       buttonText: "Play Now",
       link: "https://equation-two.vercel.app/",
+    },
+    {
+      name: "🎲 Dice vs Bot",
+      description:
+        "Interactive dice game with smooth animations. Roll against a smart AI opponent and compete for the highest score.",
+      buttonText: "Play Now",
+      link: "https://dice-web-game.vercel.app/",
+    },
+    {
+      name: "🎮 Mini Games Hub",
+      description:
+        "Collection of browser-based mini-games including puzzles, reaction tests, and skill challenges. Quick fun for any break!",
+      buttonText: "Play Games",
+      link: "https://mini-games-h.vercel.app/",
+    },
+    {
+      name: "🔤 Guess the Word",
+      description:
+        "Word-guessing challenge with clues and logic. Test your vocabulary skills and uncover hidden words through deduction.",
+      buttonText: "Play Now",
+      link: "https://abrain.vercel.app/",
+    },
+    {
+      name: "⚔️ Pokémon Battle",
+      description:
+        "Quick Pokémon battle simulator. Choose your card by luck, fight the bot, and see who wins in this turn-based mini game.",
+      buttonText: "Battle Now",
+      link: "https://pokemon-battel.vercel.app/",
+    },
+    {
+      name: "🕵️ Guess Who",
+      description:
+        "Enter any name and discover predicted age, gender, and nationality using API data. Fun interactive predictions with audio feedback.",
+      buttonText: "Guess Now",
+      link: "https://geuss-who.vercel.app/",
+    },
+    {
+      name: "📝 NotePad Pro",
+      description:
+        "Distraction-free note-taking app with sidebar organization. Create, edit, and manage all your notes in one clean interface.",
+      buttonText: "Start Writing",
+      link: "https://notepad-azure-xi.vercel.app/",
+    },
+    {
+      name: "✅ To-Do Manager",
+      description:
+        "Stay organized with task creation, completion tracking, and priority management. Clean modern interface for daily productivity.",
+      buttonText: "Organize Tasks",
+      link: "https://to-do-app-puce-three.vercel.app/",
+    },
+    {
+      name: "🔐 Password Generator Pro",
+      description:
+        "Generate secure passwords with custom naming and saved history. Access previously used passwords for complete account management.",
+      buttonText: "Generate Now",
+      link: "https://password-generator-tan-iota.vercel.app/",
+    },
+    {
+      name: "🔢 Counter App",
+      description:
+        "Simple counter with increment, decrement, and reset. Clean UI with smooth interactions for counting anything you need.",
+      buttonText: "Start Counting",
+      link: "https://timer-conter.vercel.app/",
+    },
+    {
+      name: "💸 Money Transfer",
+      description:
+        "Send money instantly with secure transactions. Enter amount, choose recipient, and track real-time transfer status.",
+      buttonText: "Transfer Now",
+      link: "https://transfer-money-two.vercel.app/",
+    },
+    {
+      name: "🌍 World Explorer",
+      description:
+        "Explore every country with detailed info: flags, capitals, population, languages, currencies, and direct Google Maps integration.",
+      buttonText: "Explore World",
+      link: "https://world-info-omega.vercel.app/",
+    },
+    {
+      name: "☀️ Weather Forecast",
+      description:
+        "Real-time weather updates with temperature, forecasts, and location-based conditions. Clean modern interface for weather tracking.",
+      buttonText: "Check Weather",
+      link: "https://dev-weather-hamza.vercel.app/",
+    },
+    {
+      name: "👤 Random User Generator",
+      description:
+        "Generate random user profiles with name, gender, email, phone, and location using RandomUser.me API. Perfect for testing.",
+      buttonText: "Generate User",
+      link: "https://get-alot-random-users.vercel.app/",
+    },
+    {
+      name: "📧 Email Generator",
+      description:
+        "Create free random emails instantly. One-click copy for testing, signups, or temporary accounts. Quick and simple.",
+      buttonText: "Get Email",
+      link: "https://random-free-email.vercel.app/",
+    },
+    {
+      name: "💬 Daily Quotes",
+      description:
+        "Get inspired with random motivational quotes. Fresh wisdom and inspiration at every click to brighten your day.",
+      buttonText: "Inspire Me",
+      link: "https://quote-day.vercel.app/",
+    },
+    {
+      name: "😂 Joke Generator",
+      description:
+        "Need a laugh? Get random jokes instantly. Click for fresh humor anytime you need a mood boost.",
+      buttonText: "Make Me Laugh",
+      link: "https://joke-gen-ten.vercel.app/",
+    },
+    {
+      name: "🐱 Cat Images",
+      description:
+        "Random cat pictures to brighten your day. Click for adorable cat photos whenever you need cuteness overload!",
+      buttonText: "Meow!",
+      link: "https://cats-gen.vercel.app/",
+    },
+    {
+      name: "🍽️ Syrian Delights",
+      description:
+        "Authentic Syrian cuisine showcase with menus, reviews, and rich cultural flavors. Experience Syria's culinary heritage online.",
+      buttonText: "View Menu",
+      link: "https://syrien.vercel.app/",
+    },
+    {
+      name: "🥩 Meet & Meat",
+      description:
+        "Premium BBQ and meat restaurant site with smoky vibes, menu highlights, and location details for carnivore enthusiasts.",
+      buttonText: "Explore Menu",
+      link: "https://meet-meat-alg.vercel.app/",
+    },
+    {
+      name: "🌐 Discord Community",
+      description:
+        "Modern Discord server showcase with event announcements, community highlights, and direct invite link to join discussions.",
+      buttonText: "Join Server",
+      link: "https://algerian-discored.vercel.app/",
     },
   ];
   return (
