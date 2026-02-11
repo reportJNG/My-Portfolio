@@ -38,6 +38,13 @@ export default function Projects() {
       link: "https://equation-two.vercel.app/",
     },
     {
+      name: "👤 Simple CRUD App",
+      description:
+        "A minimal Next.js + React + Tailwind + ShadCN app with login/signup on one page and a users page where you can view and delete users. Perfect for learning full-stack CRUD.",
+      buttonText: "View Project",
+      link: "https://crud-auth-gray.vercel.app/",
+    },
+    {
       name: "🎲 Dice vs Bot",
       description:
         "Interactive dice game with smooth animations. Roll against a smart AI opponent and compete for the highest score.",
