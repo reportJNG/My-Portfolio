@@ -17,6 +17,13 @@ export default function Projects() {
       link: "https://bank-eight-woad.vercel.app/",
     },
     {
+      name: "🔒 Crypting Password",
+      description:
+        "Secure password manager that lets you generate, save, and encrypt your passwords safely. Features include easy password management, secure storage, and a sleek, user-friendly interface.",
+      buttonText: "View on GitHub",
+      link: "https://crypting-password.vercel.app/",
+    },
+    {
       name: "📊 Shop Manager Pro",
       description:
         "Complete shop management solution with employee tracking, inventory control, daily workflows, financial reports, and premium features for enterprise stores.",
