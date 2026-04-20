@@ -3,6 +3,13 @@ import styles from "../Styles/Projects.module.css";
 export default function Projects() {
   const projects = [
     {
+      name: "🌊 SONATRACH Nautique Manager",
+      description:
+        "Full-stack web application for managing the Nautical Center. Handle member registrations, subscriptions, scheduling of slots, billing, and generate detailed reports with real-time monitoring.",
+      buttonText: "Access System",
+      link: "https://nautique-1.vercel.app/",
+    },
+    {
       name: "🚙 Mobilis Fleet Manager",
       description:
         "Enterprise vehicle fleet management system. Track vehicles, schedule maintenance, assign drivers, and generate comprehensive reports with real-time monitoring.",
