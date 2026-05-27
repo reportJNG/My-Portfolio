@@ -4,9 +4,18 @@
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: var(--surface);
+  transition:
+    border-color 180ms ease,
+    background-color 180ms ease,
+    transform 180ms ease;
   --mouse-x: 50%;
   --mouse-y: 50%;
   --spotlight-color: rgba(255, 255, 255, 0.16);
+}
+
+.card-spotlight > * {
+  position: relative;
+  z-index: 1;
 }
 
 .card-spotlight::before {
@@ -26,4 +35,14 @@
 .card-spotlight:hover::before,
 .card-spotlight:focus-within::before {
   opacity: 1;
+}
+
+.card-spotlight:hover {
+  border-color: var(--line-strong);
+}
+
+@media (hover: none), (pointer: coarse) {
+  .card-spotlight::before {
+    display: none;
+  }
 }

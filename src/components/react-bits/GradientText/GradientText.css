@@ -42,3 +42,10 @@
   background-clip: text;
   -webkit-background-clip: text;
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .animated-gradient-text .gradient-overlay,
+  .animated-gradient-text .text-content {
+    background-position: 50% 50% !important;
+  }
+}

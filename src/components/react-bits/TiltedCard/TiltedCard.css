@@ -7,16 +7,19 @@
   align-items: center;
   justify-content: center;
   margin: 0;
+  contain: layout paint;
 }
 
 .tilted-card-inner {
   position: relative;
   overflow: hidden;
+  max-width: 100%;
   border: 1px solid var(--line);
-  border-radius: 18px;
+  border-radius: var(--radius);
   background: #101318;
-  box-shadow: 0 22px 80px rgba(0, 0, 0, 0.32);
+  box-shadow: 0 22px 70px rgba(0, 0, 0, 0.3);
   transform-style: preserve-3d;
+  will-change: transform;
 }
 
 .tilted-card-img {
@@ -25,7 +28,6 @@
   display: block;
   object-fit: cover;
   transform: translateZ(0);
-  will-change: transform;
 }
 
 .tilted-card-overlay {
@@ -48,4 +50,14 @@
   font-size: 0.72rem;
   font-weight: 700;
   pointer-events: none;
+}
+
+@media (max-width: 760px), (pointer: coarse) {
+  .tilted-card-figure {
+    perspective: none;
+  }
+
+  .tilted-card-inner {
+    transform: none !important;
+  }
 }

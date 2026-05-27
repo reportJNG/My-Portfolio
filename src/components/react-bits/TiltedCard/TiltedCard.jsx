@@ -3,9 +3,9 @@ import { motion as Motion, useMotionValue, useSpring } from "motion/react";
 import "./TiltedCard.css";
 
 const springValues = {
-  damping: 30,
-  stiffness: 100,
-  mass: 2,
+  damping: 32,
+  stiffness: 140,
+  mass: 1.1,
 };
 
 export default function TiltedCard({
@@ -16,9 +16,9 @@ export default function TiltedCard({
   containerWidth = "100%",
   imageHeight = "360px",
   imageWidth = "320px",
-  scaleOnHover = 1.04,
-  rotateAmplitude = 10,
-  showTooltip = true,
+  scaleOnHover = 1.02,
+  rotateAmplitude = 6,
+  showTooltip = false,
   overlayContent = null,
   displayOverlayContent = false,
 }) {
@@ -37,7 +37,13 @@ export default function TiltedCard({
   const [lastY, setLastY] = useState(0);
 
   function handleMouse(event) {
-    if (!ref.current || window.matchMedia("(max-width: 760px)").matches) return;
+    if (
+      !ref.current ||
+      window.matchMedia("(max-width: 760px), (pointer: coarse), (prefers-reduced-motion: reduce)")
+        .matches
+    ) {
+      return;
+    }
 
     const rect = ref.current.getBoundingClientRect();
     const offsetX = event.clientX - rect.left - rect.width / 2;
@@ -54,6 +60,8 @@ export default function TiltedCard({
   }
 
   function handleMouseEnter() {
+    if (window.matchMedia("(pointer: coarse), (prefers-reduced-motion: reduce)").matches) return;
+
     scale.set(scaleOnHover);
     opacity.set(1);
   }

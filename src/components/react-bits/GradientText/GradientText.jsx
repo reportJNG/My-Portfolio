@@ -18,13 +18,14 @@ export default function GradientText({
   yoyo = true,
 }) {
   const [isPaused, setIsPaused] = useState(false);
+  const [reducedMotion, setReducedMotion] = useState(false);
   const progress = useMotionValue(0);
   const elapsedRef = useRef(0);
   const lastTimeRef = useRef(null);
   const animationDuration = animationSpeed * 1000;
 
   useAnimationFrame((time) => {
-    if (isPaused) {
+    if (isPaused || reducedMotion) {
       lastTimeRef.current = null;
       return;
     }
@@ -55,6 +56,15 @@ export default function GradientText({
     elapsedRef.current = 0;
     progress.set(0);
   }, [animationSpeed, progress, yoyo]);
+
+  useEffect(() => {
+    const query = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const update = () => setReducedMotion(query.matches);
+
+    update();
+    query.addEventListener("change", update);
+    return () => query.removeEventListener("change", update);
+  }, []);
 
   const backgroundPosition = useTransform(progress, (value) => {
     if (direction === "vertical") return `50% ${value}%`;

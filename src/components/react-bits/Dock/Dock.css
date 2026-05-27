@@ -1,41 +1,52 @@
 .dock-outer {
   position: fixed;
-  right: 0;
-  bottom: 14px;
-  left: 0;
-  z-index: 30;
+  top: 50%;
+  right: 18px;
+  z-index: 35;
   display: flex;
   max-width: 100%;
-  align-items: flex-end;
-  justify-content: center;
+  transform: translateY(-50%);
   pointer-events: none;
 }
 
 .dock-panel {
   display: flex;
-  width: fit-content;
-  align-items: flex-end;
+  flex-direction: column;
+  align-items: center;
   gap: 0.55rem;
-  padding: 0 0.55rem 0.55rem;
+  padding: 0.55rem;
   border: 1px solid var(--line);
-  border-radius: 18px;
+  border-radius: var(--radius);
   background: rgba(11, 13, 16, 0.74);
   box-shadow: 0 20px 70px rgba(0, 0, 0, 0.34);
   backdrop-filter: blur(18px);
   pointer-events: auto;
+  transform-origin: center right;
 }
 
 .dock-item {
   position: relative;
   display: inline-flex;
+  flex: 0 0 auto;
   align-items: center;
   justify-content: center;
   border: 1px solid var(--line);
-  border-radius: 13px;
+  border-radius: var(--radius);
   outline: none;
   background: rgba(255, 255, 255, 0.06);
   color: var(--text);
   cursor: pointer;
+  transition:
+    border-color 180ms ease,
+    background-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.dock-item:hover,
+.dock-item:focus-visible {
+  border-color: var(--line-strong);
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 34px rgba(103, 232, 249, 0.11);
 }
 
 .dock-icon {
@@ -46,10 +57,10 @@
 
 .dock-label {
   position: absolute;
-  top: -1.7rem;
-  left: 50%;
+  top: 50%;
+  right: calc(100% + 10px);
   width: fit-content;
-  padding: 0.18rem 0.55rem;
+  padding: 0.24rem 0.58rem;
   border: 1px solid var(--line);
   border-radius: 999px;
   background: #f8fafc;
@@ -57,11 +68,40 @@
   font-size: 0.72rem;
   font-weight: 800;
   white-space: pre;
-  transform: translateX(-50%);
+  transform: translateY(-50%);
 }
 
 @media (max-width: 760px) {
   .dock-outer {
+    top: auto;
+    right: 0;
+    bottom: 12px;
+    left: 0;
+    justify-content: center;
+    transform: none;
+  }
+
+  .dock-panel {
+    flex-direction: row;
+    max-width: calc(100vw - 24px);
+    gap: 0.35rem;
+    padding: 0.45rem;
+    overflow-x: auto;
+    scrollbar-width: none;
+    transform-origin: center bottom;
+  }
+
+  .dock-panel::-webkit-scrollbar {
     display: none;
+  }
+
+  .dock-label {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dock-outer {
+    animation: none;
   }
 }
