@@ -12,7 +12,7 @@ import {
   useRef,
   useState,
 } from "react";
-import "./Dock.css";
+import "./FloatingDock.css";
 
 function DockItem({
   children,
@@ -114,7 +114,7 @@ function DockIcon({ children, className = "" }) {
   return <div className={`dock-icon ${className}`.trim()}>{children}</div>;
 }
 
-export default function Dock({
+export default function FloatingDock({
   items,
   className = "",
   spring = { mass: 0.12, stiffness: 170, damping: 18 },

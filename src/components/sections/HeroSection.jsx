@@ -1,11 +1,11 @@
 import { ArrowUpRight, Download, Mail } from "lucide-react";
 
-import profile from "../assets/me.png";
-import BlurText from "../components/react-bits/BlurText/BlurText";
-import GradientText from "../components/react-bits/GradientText/GradientText";
-import SpotlightCard from "../components/react-bits/SpotlightCard/SpotlightCard";
-import TiltedCard from "../components/react-bits/TiltedCard/TiltedCard";
-import { stats } from "../data/portfolioData";
+import profile from "../../assets/me.png";
+import BlurText from "../effects/BlurText/BlurText";
+import GradientText from "../effects/GradientText/GradientText";
+import SpotlightCard from "../effects/SpotlightCard/SpotlightCard";
+import TiltedCard from "../effects/TiltedCard/TiltedCard";
+import { stats } from "../../data/portfolioData";
 
 export default function Hero({ onDownload }) {
   return (

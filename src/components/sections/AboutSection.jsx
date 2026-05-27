@@ -1,8 +1,8 @@
 import { ShieldCheck } from "lucide-react";
 
-import SpotlightCard from "../components/react-bits/SpotlightCard/SpotlightCard";
-import SectionTitle from "../components/ui/SectionTitle";
-import { facts } from "../data/portfolioData";
+import SectionTitle from "../common/SectionTitle";
+import SpotlightCard from "../effects/SpotlightCard/SpotlightCard";
+import { facts } from "../../data/portfolioData";
 
 export default function About() {
   return (

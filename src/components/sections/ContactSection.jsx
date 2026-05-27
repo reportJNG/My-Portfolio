@@ -1,6 +1,6 @@
 import { Code2, Mail, Phone, UserRound } from "lucide-react";
 
-import SectionTitle from "../components/ui/SectionTitle";
+import SectionTitle from "../common/SectionTitle";
 
 export default function Contact() {
   return (

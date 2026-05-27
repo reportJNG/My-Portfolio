@@ -1,6 +1,6 @@
-import SpotlightCard from "../components/react-bits/SpotlightCard/SpotlightCard";
-import SectionTitle from "../components/ui/SectionTitle";
-import { languages, skills } from "../data/portfolioData";
+import SectionTitle from "../common/SectionTitle";
+import SpotlightCard from "../effects/SpotlightCard/SpotlightCard";
+import { languages, skills } from "../../data/portfolioData";
 
 export default function Skills() {
   return (

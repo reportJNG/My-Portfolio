@@ -1,14 +1,41 @@
-# RX Hamza Portfolio
+# Remali Hamza Portfolio
 
-Personal developer portfolio for Remali Hamza, built with React and Vite.
+A polished one-page developer portfolio for Remali Hamza, built with React, Vite, Motion, Lucide icons, Devicon skill icons, and a lazy-loaded PDF export flow.
 
-## Features
+## Highlights
 
-- Single-page portfolio with Home, Work, Skills, Training, and Contact sections
-- Responsive dark UI with subtle motion and desktop dock navigation
-- Project inventory grouped for quick scanning
-- Lazy-loaded PDF export for the downloadable CV
-- Devicon skill icons and Lucide UI icons
+- Responsive portfolio sections for profile, work, skills, training, and contact.
+- Animated hero headline, profile card, spotlight cards, and floating dock navigation.
+- Structured project inventory powered by a single data file.
+- Downloadable CV/PDF export loaded only when the user requests it.
+- Modern dependency set with Vite 8, ESLint 10, React 19, and zero npm audit vulnerabilities.
+
+## Tech Stack
+
+- React 19
+- Vite 8
+- Motion
+- Lucide React
+- html2pdf.js
+- ESLint flat config
+
+## Project Structure
+
+```text
+src/
+  assets/                  Static portfolio assets
+  components/
+    common/                Shared UI such as section titles
+    effects/               Motion and visual effect components
+    layout/                Page composition and app shell
+    navigation/            Floating dock navigation
+    sections/              Portfolio page sections
+  data/                    Portfolio content and project inventory
+  hooks/                   Reusable app hooks
+  App.jsx                  Thin app entry component
+  main.jsx                 React mount point
+  index.css                Global theme and responsive layout styles
+```
 
 ## Scripts
 
@@ -19,17 +46,41 @@ npm run build
 npm run preview
 ```
 
-## Tech
+## Local Development
 
-- React
-- Vite
-- Motion
-- Lucide React
-- html2pdf.js
+Install dependencies, then start Vite:
 
-## Structure
+```bash
+npm install
+npm run dev
+```
 
-- `src/App.jsx` contains the app shell and navigation wiring.
-- `src/sections` contains the page sections.
-- `src/data/portfolioData.js` contains projects, skills, languages, and stats.
-- `src/components/react-bits` contains the reusable animated UI pieces.
+The app runs locally at the URL Vite prints in the terminal, usually `http://localhost:5173/`.
+
+## Content Editing
+
+Most portfolio content lives in `src/data/portfolioData.js`:
+
+- `stats` controls the hero stat cards.
+- `facts` controls the profile facts.
+- `projects` controls the featured and compact work sections.
+- `languages` controls the Devicon language grid.
+- `skills` controls the skill tags.
+
+The first 9 projects are shown as featured cards. The rest are shown in the compact project list.
+
+## Quality Checks
+
+Before publishing changes:
+
+```bash
+npm run lint
+npm run build
+```
+
+Current cleanup status:
+
+- Unused router dependencies removed.
+- Empty legacy folders removed.
+- Component folders reorganized by responsibility.
+- npm audit reports zero vulnerabilities.

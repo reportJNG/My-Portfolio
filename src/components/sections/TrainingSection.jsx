@@ -1,7 +1,7 @@
 import { Award, MapPin } from "lucide-react";
 
-import SpotlightCard from "../components/react-bits/SpotlightCard/SpotlightCard";
-import SectionTitle from "../components/ui/SectionTitle";
+import SectionTitle from "../common/SectionTitle";
+import SpotlightCard from "../effects/SpotlightCard/SpotlightCard";
 
 export default function Training() {
   return (

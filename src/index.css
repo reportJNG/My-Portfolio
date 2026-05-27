@@ -33,6 +33,7 @@ html {
 }
 
 body {
+  width: 100%;
   min-width: 320px;
   margin: 0;
   overflow-x: hidden;
@@ -52,6 +53,10 @@ body::before {
   background-image: linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px);
   background-size: 100% 48px;
   mask-image: linear-gradient(to bottom, black 0, transparent 78%);
+}
+
+#root {
+  overflow-x: hidden;
 }
 
 a {
@@ -537,6 +542,7 @@ button {
   }
 
   .hero {
+    display: block;
     min-height: auto;
     padding-top: 44px;
     overflow: hidden;
@@ -552,13 +558,18 @@ button {
 
   .hero-title {
     max-width: 100%;
-    font-size: clamp(2.25rem, 10.7vw, 3.2rem);
+    font-size: clamp(2.1rem, 10vw, 3rem);
     overflow-wrap: anywhere;
   }
 
   .hero-lede {
     max-width: 38rem;
     overflow-wrap: anywhere;
+  }
+
+  .hero-card-wrap,
+  .stats {
+    margin-top: 34px;
   }
 
   .hero-actions,
@@ -616,6 +627,11 @@ button {
 }
 
 @media (max-width: 420px) {
+  .hero-title {
+    font-size: 2.55rem;
+    line-height: 1.02;
+  }
+
   .about-main,
   .skill-panel,
   .training-card,

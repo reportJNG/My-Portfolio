@@ -1,4 +1,4 @@
-import GradientText from "../react-bits/GradientText/GradientText";
+import GradientText from "../effects/GradientText/GradientText";
 
 export default function SectionTitle({ eyebrow, title, children }) {
   return (

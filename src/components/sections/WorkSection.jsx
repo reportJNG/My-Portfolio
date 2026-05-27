@@ -1,8 +1,8 @@
 import { ArrowUpRight, ExternalLink } from "lucide-react";
 
-import SpotlightCard from "../components/react-bits/SpotlightCard/SpotlightCard";
-import SectionTitle from "../components/ui/SectionTitle";
-import { projects } from "../data/portfolioData";
+import SectionTitle from "../common/SectionTitle";
+import SpotlightCard from "../effects/SpotlightCard/SpotlightCard";
+import { projects } from "../../data/portfolioData";
 
 export default function Work() {
   const featured = projects.slice(0, 9);
