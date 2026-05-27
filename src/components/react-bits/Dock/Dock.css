@@ -1,27 +1,32 @@
 .dock-outer {
   position: fixed;
-  top: 50%;
-  right: 18px;
-  z-index: 35;
+  right: 0;
+  bottom: max(18px, env(safe-area-inset-bottom));
+  left: 0;
+  z-index: 999;
   display: flex;
+  width: 100%;
   max-width: 100%;
-  transform: translateY(-50%);
+  justify-content: center;
   pointer-events: none;
 }
 
 .dock-panel {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 0.55rem;
-  padding: 0.55rem;
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  background: rgba(11, 13, 16, 0.74);
-  box-shadow: 0 20px 70px rgba(0, 0, 0, 0.34);
-  backdrop-filter: blur(18px);
+  justify-content: center;
+  gap: 0.45rem;
+  max-width: calc(100vw - 24px);
+  padding: 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: calc(var(--radius) + 6px);
+  background: rgba(8, 10, 14, 0.72);
+  box-shadow:
+    0 24px 80px rgba(0, 0, 0, 0.38),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px) saturate(1.16);
   pointer-events: auto;
-  transform-origin: center right;
+  transform-origin: center;
 }
 
 .dock-item {
@@ -33,20 +38,20 @@
   border: 1px solid var(--line);
   border-radius: var(--radius);
   outline: none;
-  background: rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.065);
   color: var(--text);
   cursor: pointer;
   transition:
-    border-color 180ms ease,
-    background-color 180ms ease,
-    box-shadow 180ms ease;
+    border-color 160ms ease,
+    background-color 160ms ease,
+    box-shadow 160ms ease;
 }
 
 .dock-item:hover,
 .dock-item:focus-visible {
-  border-color: var(--line-strong);
-  background: rgba(255, 255, 255, 0.1);
-  box-shadow: 0 10px 34px rgba(103, 232, 249, 0.11);
+  border-color: rgba(103, 232, 249, 0.44);
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 10px 34px rgba(103, 232, 249, 0.14);
 }
 
 .dock-icon {
@@ -57,38 +62,33 @@
 
 .dock-label {
   position: absolute;
-  top: 50%;
-  right: calc(100% + 10px);
+  bottom: calc(100% + 10px);
+  left: 50%;
   width: fit-content;
-  padding: 0.24rem 0.58rem;
-  border: 1px solid var(--line);
+  padding: 0.26rem 0.62rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 999px;
   background: #f8fafc;
   color: #0b0d10;
   font-size: 0.72rem;
   font-weight: 800;
+  line-height: 1;
   white-space: pre;
-  transform: translateY(-50%);
+  transform: translateX(-50%);
 }
 
 @media (max-width: 760px) {
   .dock-outer {
-    top: auto;
-    right: 0;
-    bottom: 12px;
-    left: 0;
-    justify-content: center;
-    transform: none;
+    bottom: max(12px, env(safe-area-inset-bottom));
+    max-width: calc(100vw - 18px);
   }
 
   .dock-panel {
-    flex-direction: row;
-    max-width: calc(100vw - 24px);
+    max-width: calc(100vw - 18px);
     gap: 0.35rem;
-    padding: 0.45rem;
+    padding: 0.42rem;
     overflow-x: auto;
     scrollbar-width: none;
-    transform-origin: center bottom;
   }
 
   .dock-panel::-webkit-scrollbar {
@@ -100,8 +100,16 @@
   }
 }
 
+@media (max-width: 420px) {
+  .dock-panel {
+    gap: 0.28rem;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .dock-outer {
-    animation: none;
+  .dock-outer,
+  .dock-panel,
+  .dock-item {
+    transition: none;
   }
 }

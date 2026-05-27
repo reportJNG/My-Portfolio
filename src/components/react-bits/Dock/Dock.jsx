@@ -50,11 +50,15 @@ function DockItem({
     [baseItemSize, magnification, baseItemSize],
   );
   const size = useSpring(targetSize, spring);
+  const itemSize =
+    typeof window !== "undefined" && window.matchMedia("(pointer: coarse)").matches
+      ? baseItemSize
+      : size;
 
   return (
     <Motion.div
       ref={ref}
-      style={{ width: size, height: size }}
+      style={{ width: itemSize, height: itemSize }}
       onHoverStart={() => isHovered.set(1)}
       onHoverEnd={() => isHovered.set(0)}
       onFocus={() => isHovered.set(1)}
@@ -92,9 +96,9 @@ function DockLabel({ children, className = "", ...rest }) {
     <AnimatePresence>
       {isVisible ? (
         <Motion.div
-          initial={{ opacity: 0, x: 8 }}
-          animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: 8 }}
+          initial={{ opacity: 0, y: 6, scale: 0.96 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          exit={{ opacity: 0, y: 6, scale: 0.96 }}
           transition={{ duration: 0.16 }}
           className={`dock-label ${className}`.trim()}
           role="tooltip"
@@ -114,10 +118,10 @@ export default function Dock({
   items,
   className = "",
   spring = { mass: 0.12, stiffness: 170, damping: 18 },
-  magnification = 56,
-  distance = 130,
-  baseItemSize = 46,
-  orientation = "vertical",
+  magnification = 54,
+  distance = 120,
+  baseItemSize = 44,
+  orientation = "horizontal",
 }) {
   const pointerPosition = useMotionValue(Infinity);
   const isHovered = useMotionValue(0);
@@ -126,9 +130,9 @@ export default function Dock({
   return (
     <Motion.nav
       className="dock-outer"
-      initial={{ opacity: 0, x: 18 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+      initial={{ opacity: 0, y: 18, scale: 0.98 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      transition={{ duration: 0.42, ease: [0.22, 1, 0.36, 1] }}
       aria-label="Portfolio navigation"
     >
       <Motion.div
