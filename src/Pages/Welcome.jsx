@@ -1,18 +1,19 @@
 import { useState, useEffect } from "react";
 import styles from "../Styles/Welcome.module.css";
 import monkey from "../assets/me.png"
-export default function Welcome() {
-  const messages = [
-    "Crafting Full-Stack Experiences",
-    "Polished Front-End Interfaces",
-    "Robust, Scalable Back-End Logic",
-    "Fast, Clean & Optimized Code",
-    "Built to Be Rock Solid",
-    "Websites That Impress and Convert",
-    "Let Me Build Your Next Website - Done Right",
-    "Freelance"
-  ];
 
+const messages = [
+  "Crafting Full-Stack Experiences",
+  "Polished Front-End Interfaces",
+  "Robust, Scalable Back-End Logic",
+  "Fast, Clean & Optimized Code",
+  "Built to Be Rock Solid",
+  "Websites That Impress and Convert",
+  "Let Me Build Your Next Website - Done Right",
+  "Freelance"
+];
+
+export default function Welcome() {
   const [displayedText, setDisplayedText] = useState("");
   const [messageIndex, setMessageIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
