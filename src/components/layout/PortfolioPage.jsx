@@ -1,10 +1,8 @@
 import { createElement, useMemo } from "react";
 import {
-  Award,
   BriefcaseBusiness,
-  Code2,
   Download,
-  Gamepad2,
+  ExternalLink,
   Home,
   Mail,
 } from "lucide-react";
@@ -23,8 +21,6 @@ import {
 const navItems = [
   { label: "Home", href: "#home", icon: Home },
   { label: "Work", href: "#work", icon: BriefcaseBusiness },
-  { label: "Skills", href: "#skills", icon: Code2 },
-  { label: "Training", href: "#training", icon: Award },
   { label: "Contact", href: "#contact", icon: Mail },
 ];
 
@@ -39,13 +35,6 @@ export default function PortfolioPage() {
         },
       })),
       {
-        label: "Game",
-        icon: createElement(Gamepad2, { size: 19 }),
-        onClick: () => {
-          window.open("https://hamzaremali.vercel.app/", "_blank", "noreferrer");
-        },
-      },
-      {
         label: "CV",
         icon: createElement(Download, { size: 19 }),
         onClick: () => {
@@ -53,6 +42,13 @@ export default function PortfolioPage() {
           link.href = cv;
           link.download = "Hamza_Remali_CV.pdf";
           link.click();
+        },
+      },
+      {
+        label: "Site",
+        icon: createElement(ExternalLink, { size: 19 }),
+        onClick: () => {
+          window.open("https://hamzaremali.vercel.app/", "_blank", "noreferrer");
         },
       },
     ],

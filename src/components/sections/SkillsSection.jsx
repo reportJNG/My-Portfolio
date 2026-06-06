@@ -1,11 +1,14 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef } from "react";
 import SectionTitle from "../common/SectionTitle";
 import SpotlightCard from "../effects/SpotlightCard/SpotlightCard";
 import { languages } from "../../data/portfolioData";
 
-const STEP = 420;
-const LIT_DURATION = 360;
-const LINE_DELAY = 80;
+const STEP = 520; // ms between each hop
+const ENTER_DUR = 320; // ripple + shine burst
+const ACTIVE_DUR = 260; // hold lit
+const WIRE_DELAY = 200; // wire fires while block is still lit
+const WIRE_DUR = 280; // wire travel time
+const LEAVE_DUR = 500; // slow fade back to dim
 
 const skillColors = {
   HTML: "#E34F26",
@@ -17,7 +20,7 @@ const skillColors = {
   "C++": "#00599C",
   Pascal: "#E53935",
   React: "#61DAFB",
-  "Next.js": "#E2E8F0",
+  "Next.js": "#c8d0dc",
   "Node.js": "#5FA04E",
   Express: "#D8DEE8",
   MongoDB: "#47A248",
@@ -35,38 +38,57 @@ const skillColors = {
   "Tailwind CSS": "#06B6D4",
   Bootstrap: "#7952B3",
   Vite: "#646CFF",
-  Vercel: "#E2E8F0",
+  Vercel: "#c8d0dc",
 };
 
 export default function Skills() {
-  const [activeBlock, setActiveBlock] = useState(0);
-  const [activeLine, setActiveLine] = useState(null);
+  const boxRefs = useRef([]);
+  const wireRefs = useRef([]);
+  const timers = useRef([]);
 
   useEffect(() => {
-    const timeouts = new Set();
-    let active = 0;
+    const after = (fn, ms) => {
+      const t = window.setTimeout(fn, ms);
+      timers.current.push(t);
+      return t;
+    };
 
-    const setManagedTimeout = (callback, delay) => {
-      const timeout = window.setTimeout(() => {
-        timeouts.delete(timeout);
-        callback();
-      }, delay);
-      timeouts.add(timeout);
+    let cur = 0;
+
+    const activate = (i) => {
+      const box = boxRefs.current[i];
+      const wire = wireRefs.current[i];
+      if (!box) return;
+
+      // Enter: ripple bursts, shine sweeps, icon lifts
+      box.classList.remove("sk-leaving", "sk-active");
+      box.classList.add("sk-entering");
+
+      // Settle into active hold
+      after(() => {
+        box.classList.remove("sk-entering");
+        box.classList.add("sk-active");
+      }, ENTER_DUR);
+
+      // Wire fires mid-active
+      if (wire) {
+        after(() => {
+          wire.classList.add("sk-firing");
+          after(() => wire.classList.remove("sk-firing"), WIRE_DUR);
+        }, WIRE_DELAY);
+      }
+
+      // Leave: slow fade back to dim
+      after(() => {
+        box.classList.remove("sk-active");
+        box.classList.add("sk-leaving");
+        after(() => box.classList.remove("sk-leaving"), LEAVE_DUR);
+      }, ENTER_DUR + ACTIVE_DUR);
     };
 
     const tick = () => {
-      setActiveBlock(active);
-      setActiveLine(null);
-
-      setManagedTimeout(() => {
-        setActiveLine(active);
-      }, LINE_DELAY);
-
-      setManagedTimeout(() => {
-        setActiveLine(null);
-      }, LIT_DURATION);
-
-      active = (active + 1) % languages.length;
+      activate(cur);
+      cur = (cur + 1) % languages.length;
     };
 
     tick();
@@ -74,8 +96,8 @@ export default function Skills() {
 
     return () => {
       window.clearInterval(interval);
-      timeouts.forEach((t) => window.clearTimeout(t));
-      timeouts.clear();
+      timers.current.forEach(window.clearTimeout);
+      timers.current = [];
     };
   }, []);
 
@@ -93,19 +115,19 @@ export default function Skills() {
           className="p-[22px] max-[420px]:p-[16px]"
           spotlightColor="rgba(83, 74, 183, 0.12)"
         >
-          {/* Panel header */}
+          {/* Header row */}
           <div className="mb-5 flex items-center gap-3">
-            <span className="text-[10px] font-bold uppercase tracking-[0.12em] text-white/30">
+            <span className="text-[10px] font-bold uppercase tracking-[0.12em] text-white/25">
               Languages &amp; tools
             </span>
-            <div className="h-px flex-1 bg-white/[0.07]" />
-            <span className="text-[10px] font-bold tabular-nums text-white/20">
+            <div className="h-px flex-1 bg-white/[0.06]" />
+            <span className="text-[10px] font-semibold tabular-nums text-white/[0.18]">
               {languages.length}
             </span>
           </div>
 
-          {/* Inner container */}
-          <div className="rounded-[10px] border border-white/[0.05] bg-white/[0.02] p-4">
+          {/* Chain container */}
+          <div className="rounded-[11px] border border-white/[0.05] bg-white/[0.02] p-[18px]">
             <div
               className="flex flex-wrap items-center gap-y-[10px]"
               aria-label="Technology skills"
@@ -118,50 +140,32 @@ export default function Skills() {
                 >
                   {/* Skill block */}
                   <div
-                    className={[
-                      "group relative inline-flex h-[50px] w-[54px] flex-none cursor-default flex-col items-center justify-center gap-[5px] rounded-[10px] border transition-[transform,border-color,background-color,color] duration-[180ms] ease-out",
-                      activeBlock === index
-                        ? "-translate-y-[2px] border-[color:color-mix(in_srgb,var(--skill-color)_40%,transparent)] bg-[color-mix(in_srgb,var(--skill-color)_11%,#0d1014)] text-[var(--skill-color)]"
-                        : "border-white/[0.07] bg-white/[0.03] text-white/[0.22]",
-                    ]
-                      .filter(Boolean)
-                      .join(" ")}
+                    className="skill-block"
                     title={`${name}${years ? ` · ${years}` : ""}`}
+                    ref={(n) => {
+                      boxRefs.current[index] = n;
+                    }}
                   >
+                    <div className="skill-ripple" />
+                    <div className="skill-shine" />
+                    <div className="skill-dot" />
                     <i
-                      className={`${iconClass} text-[17px] leading-none text-current`}
+                      className={`${iconClass} skill-icon`}
                       aria-hidden="true"
                     />
-                    <span className="max-w-[48px] overflow-hidden text-ellipsis whitespace-nowrap text-center text-[8px] font-[600] leading-none tracking-[0.05em] text-current">
-                      {name}
-                    </span>
-
-                    {/* Lit glow dot — top-right corner */}
-                    {activeBlock === index && (
-                      <span className="absolute right-[5px] top-[5px] h-[4px] w-[4px] rounded-full bg-[var(--skill-color)] opacity-70" />
-                    )}
+                    <span className="skill-label">{name}</span>
                   </div>
 
-                  {/* Connector line */}
+                  {/* Connector wire */}
                   {index < languages.length - 1 && (
                     <div
-                      className="relative h-[1.5px] w-[16px] flex-none overflow-hidden rounded-full bg-white/[0.05]"
+                      className="skill-wire"
                       aria-hidden="true"
+                      ref={(n) => {
+                        wireRefs.current[index] = n;
+                      }}
                     >
-                      <span
-                        className={[
-                          "absolute top-0 h-full w-full rounded-[inherit] bg-[var(--skill-color)] transition-[left] duration-[180ms] ease-out",
-                          activeLine === index ? "left-0" : "left-[-100%]",
-                        ]
-                          .filter(Boolean)
-                          .join(" ")}
-                        style={{
-                          boxShadow:
-                            activeLine === index
-                              ? "0 0 5px var(--skill-color)"
-                              : "none",
-                        }}
-                      />
+                      <span className="skill-wire-fill" />
                     </div>
                   )}
                 </div>
@@ -170,6 +174,124 @@ export default function Skills() {
           </div>
         </SpotlightCard>
       </div>
+
+      <style>{`
+        .skill-block {
+          position: relative;
+          display: inline-flex;
+          width: 54px; height: 54px;
+          flex: 0 0 54px;
+          flex-direction: column;
+          align-items: center; justify-content: center;
+          gap: 5px;
+          border-radius: 11px;
+          border: 1px solid rgba(255,255,255,0.07);
+          background: rgba(255,255,255,0.03);
+          overflow: hidden;
+          cursor: default;
+          transition: border-color 0.25s ease, background 0.25s ease;
+        }
+        .skill-icon {
+          font-size: 17px; line-height: 1;
+          color: rgba(255,255,255,0.2);
+          transition: color 0.25s ease, transform 0.3s cubic-bezier(.22,1,.36,1);
+          position: relative; z-index: 1;
+        }
+        .skill-label {
+          font-size: 8px; font-weight: 600; letter-spacing: 0.05em;
+          color: rgba(255,255,255,0.2);
+          line-height: 1; text-align: center;
+          max-width: 50px; overflow: hidden;
+          text-overflow: ellipsis; white-space: nowrap;
+          transition: color 0.25s ease;
+          position: relative; z-index: 1;
+        }
+        .skill-ripple {
+          position: absolute; inset: 0; border-radius: inherit;
+          background: radial-gradient(circle at 50% 50%, var(--skill-color) 0%, transparent 70%);
+          opacity: 0; transform: scale(0.3); pointer-events: none;
+        }
+        .skill-shine {
+          position: absolute; top: 0; left: -70%;
+          width: 45%; height: 100%;
+          background: linear-gradient(90deg, transparent, rgba(255,255,255,0.09), transparent);
+          transform: skewX(-18deg); opacity: 0; pointer-events: none;
+        }
+        .skill-dot {
+          position: absolute; top: 5px; right: 5px;
+          width: 4px; height: 4px; border-radius: 50%;
+          background: var(--skill-color); opacity: 0;
+          transition: opacity 0.2s ease;
+        }
+
+        .sk-entering {
+          border-color: color-mix(in srgb, var(--skill-color) 45%, transparent) !important;
+          background: color-mix(in srgb, var(--skill-color) 11%, #0d1014) !important;
+        }
+        .sk-entering .skill-icon  { color: var(--skill-color) !important; transform: scale(1.14) !important; }
+        .sk-entering .skill-label { color: var(--skill-color) !important; }
+        .sk-entering .skill-dot   { opacity: 0.75 !important; }
+        .sk-entering .skill-ripple { animation: sk-ripple-in 0.38s cubic-bezier(.22,1,.36,1) forwards; }
+        .sk-entering .skill-shine  { animation: sk-shine 0.42s ease forwards 0.04s; }
+
+        .sk-active {
+          border-color: color-mix(in srgb, var(--skill-color) 38%, transparent) !important;
+          background: color-mix(in srgb, var(--skill-color) 9%, #0d1014) !important;
+        }
+        .sk-active .skill-icon  { color: var(--skill-color) !important; transform: scale(1.08) !important; }
+        .sk-active .skill-label { color: var(--skill-color) !important; }
+        .sk-active .skill-dot   { opacity: 0.65 !important; }
+        .sk-active .skill-ripple { opacity: 0.13; transform: scale(1); }
+
+        .sk-leaving {
+          border-color: rgba(255,255,255,0.07) !important;
+          background: rgba(255,255,255,0.03) !important;
+          transition: border-color 0.5s ease, background 0.5s ease !important;
+        }
+        .sk-leaving .skill-icon  { color: rgba(255,255,255,0.2) !important; transform: scale(1) !important; transition: color 0.5s ease, transform 0.5s ease !important; }
+        .sk-leaving .skill-label { color: rgba(255,255,255,0.2) !important; transition: color 0.5s ease !important; }
+        .sk-leaving .skill-dot   { opacity: 0 !important; transition: opacity 0.4s ease !important; }
+        .sk-leaving .skill-ripple { animation: sk-ripple-out 0.45s ease forwards !important; }
+
+        .skill-wire {
+          width: 18px; height: 2px; flex: 0 0 18px;
+          border-radius: 2px; background: rgba(255,255,255,0.05);
+          position: relative; overflow: hidden;
+        }
+        .skill-wire-fill {
+          position: absolute; top: 0; left: 0;
+          height: 100%; width: 0%;
+          border-radius: inherit;
+          background: var(--skill-color);
+        }
+        .sk-firing .skill-wire-fill {
+          animation: sk-wire 0.28s cubic-bezier(.4,0,.2,1) forwards;
+          box-shadow: 0 0 5px var(--skill-color);
+        }
+
+        @keyframes sk-ripple-in {
+          0%   { opacity: 0;    transform: scale(0.3); }
+          55%  { opacity: 0.22; transform: scale(1.08); }
+          100% { opacity: 0.13; transform: scale(1); }
+        }
+        @keyframes sk-ripple-out {
+          0%   { opacity: 0.13; transform: scale(1); }
+          100% { opacity: 0;    transform: scale(0.4); }
+        }
+        @keyframes sk-shine {
+          0%   { opacity: 0; left: -70%; }
+          35%  { opacity: 1; }
+          100% { opacity: 0; left: 120%; }
+        }
+        @keyframes sk-wire {
+          0%   { width: 0%;   left: 0; opacity: 1; }
+          100% { width: 100%; left: 0; opacity: 1; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .skill-ripple, .skill-shine, .skill-wire-fill { animation: none !important; }
+        }
+      `}</style>
     </section>
   );
 }
