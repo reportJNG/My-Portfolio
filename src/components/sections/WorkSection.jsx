@@ -79,6 +79,11 @@ export default function Work() {
     );
   };
 
+  const showLessProjects = () => {
+    setVisibleCount(PROJECT_BATCH_SIZE);
+    document.querySelector("#work")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
   return (
     <section className="section shell works-section" id="work">
       <div className="works-header">
@@ -131,11 +136,19 @@ export default function Work() {
         )}
       </div>
 
-      {remainingCount > 0 ? (
+      {remainingCount > 0 || visibleCount > PROJECT_BATCH_SIZE ? (
         <div className="works-more">
-          <button type="button" onClick={showMoreProjects}>
-            Show more
-          </button>
+          {remainingCount > 0 ? (
+            <button type="button" onClick={showMoreProjects}>
+              Show more
+            </button>
+          ) : null}
+
+          {visibleCount > PROJECT_BATCH_SIZE ? (
+            <button type="button" onClick={showLessProjects}>
+              Show less
+            </button>
+          ) : null}
         </div>
       ) : null}
 

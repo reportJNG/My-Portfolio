@@ -163,6 +163,7 @@ button {
   border-color: rgba(103, 232, 249, 0.42);
   background: #101318;
   color: #f7f7f2;
+  perspective: 120px;
   box-shadow:
     inset 0 0 0 1px rgba(255, 255, 255, 0.04),
     0 10px 28px rgba(103, 232, 249, 0.08);
@@ -170,14 +171,15 @@ button {
 
 .button.game::before,
 .button.game::after,
-.game-button-bg {
+.game-scene,
+.game-scene span {
   position: absolute;
-  inset: 0;
   z-index: -1;
   content: "";
 }
 
 .button.game::before {
+  inset: 0;
   background:
     linear-gradient(90deg, transparent, rgba(167, 243, 208, 0.22), transparent),
     linear-gradient(135deg, rgba(103, 232, 249, 0.34), transparent 42%),
@@ -187,20 +189,95 @@ button {
 }
 
 .button.game::after {
+  inset: 0;
   background-image:
     linear-gradient(rgba(255, 255, 255, 0.14) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.14) 1px, transparent 1px);
   background-size: 10px 10px;
-  opacity: 0.18;
+  opacity: 0.12;
   animation: game-grid 1.2s steps(8) infinite;
 }
 
-.game-button-bg {
+.game-scene {
+  inset: 0;
+  overflow: hidden;
+  transform: rotateX(0deg);
+  transform-style: preserve-3d;
+}
+
+.game-sky {
+  inset: 0;
   background:
-    radial-gradient(circle at 20% 50%, rgba(103, 232, 249, 0.32) 0 3px, transparent 4px),
-    radial-gradient(circle at 74% 50%, rgba(253, 230, 138, 0.34) 0 3px, transparent 4px),
-    linear-gradient(90deg, rgba(103, 232, 249, 0.12), rgba(167, 243, 208, 0.08));
-  opacity: 0.85;
+    radial-gradient(circle at 18% 24%, rgba(253, 230, 138, 0.52) 0 4px, transparent 5px),
+    linear-gradient(180deg, rgba(103, 232, 249, 0.28), rgba(16, 19, 24, 0.2) 60%);
+}
+
+.game-hills {
+  right: -16px;
+  bottom: 9px;
+  left: -16px;
+  height: 24px;
+  background:
+    radial-gradient(32px 20px at 18% 100%, rgba(167, 243, 208, 0.46) 0 68%, transparent 70%),
+    radial-gradient(42px 24px at 48% 100%, rgba(103, 232, 249, 0.34) 0 68%, transparent 70%),
+    radial-gradient(34px 22px at 82% 100%, rgba(167, 243, 208, 0.4) 0 68%, transparent 70%);
+  filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.18));
+  transform: translateZ(-22px) scale(1.18);
+  animation: game-hills 4.8s linear infinite;
+}
+
+.game-ground {
+  right: -12px;
+  bottom: -10px;
+  left: -12px;
+  height: 21px;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      rgba(253, 230, 138, 0.34) 0 8px,
+      rgba(167, 243, 208, 0.28) 8px 16px
+    ),
+    linear-gradient(180deg, rgba(167, 243, 208, 0.46), rgba(103, 232, 249, 0.18));
+  box-shadow: 0 -5px 14px rgba(167, 243, 208, 0.14);
+  transform: rotateX(58deg) translateY(2px) translateZ(14px);
+  transform-origin: bottom;
+  animation: game-ground 0.72s linear infinite;
+}
+
+.game-cube {
+  bottom: 11px;
+  width: 8px;
+  height: 8px;
+  border: 1px solid rgba(247, 247, 242, 0.52);
+  background: rgba(253, 230, 138, 0.62);
+  box-shadow:
+    3px 3px 0 rgba(103, 232, 249, 0.26),
+    0 0 10px rgba(253, 230, 138, 0.32);
+  transform: rotateX(48deg) rotateZ(45deg);
+}
+
+.cube-one {
+  left: 26px;
+  animation: game-cube-one 2.5s ease-in-out infinite;
+}
+
+.cube-two {
+  right: 30px;
+  animation: game-cube-two 3.1s ease-in-out infinite;
+}
+
+.game-player {
+  bottom: 15px;
+  left: 50%;
+  width: 9px;
+  height: 9px;
+  border-radius: 2px 2px 5px 5px;
+  background: #f7f7f2;
+  box-shadow:
+    0 -6px 0 -2px rgba(103, 232, 249, 0.9),
+    0 0 14px rgba(103, 232, 249, 0.48);
+  transform: translateX(-50%) translateZ(26px);
+  animation: game-player 1.05s ease-in-out infinite;
 }
 
 .button.game:hover {
@@ -285,6 +362,59 @@ button {
   }
 }
 
+@keyframes game-hills {
+  0% {
+    transform: translateX(0) translateZ(-22px) scale(1.18);
+  }
+
+  100% {
+    transform: translateX(-28px) translateZ(-22px) scale(1.18);
+  }
+}
+
+@keyframes game-ground {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: -16px 0;
+  }
+}
+
+@keyframes game-cube-one {
+  0%,
+  100% {
+    transform: rotateX(48deg) rotateZ(45deg) translateY(0);
+  }
+
+  50% {
+    transform: rotateX(48deg) rotateZ(45deg) translateY(-6px);
+  }
+}
+
+@keyframes game-cube-two {
+  0%,
+  100% {
+    transform: rotateX(48deg) rotateZ(45deg) translateY(-1px);
+  }
+
+  50% {
+    transform: rotateX(48deg) rotateZ(45deg) translateY(5px);
+  }
+}
+
+@keyframes game-player {
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(0) translateZ(26px);
+  }
+
+  45% {
+    transform: translateX(-50%) translateY(-5px) translateZ(26px);
+  }
+}
+
 .section {
   padding: 70px 0 0;
 }
@@ -325,10 +455,28 @@ button {
 }
 
 .about-main h3,
-.skill-panel h3,
 .training-card h3 {
   margin: 14px 0 8px;
   font-size: 1.12rem;
+}
+
+.skill-panel h3 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 16px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.skill-panel h3::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--line);
 }
 
 .about-main p,
@@ -511,35 +659,37 @@ button {
 
 .skill-block {
   display: inline-flex;
-  width: 58px;
-  height: 54px;
-  flex: 0 0 58px;
+  width: 56px;
+  height: 52px;
+  flex: 0 0 56px;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 4px;
-  border: 1px solid var(--line);
+  gap: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 10px;
-  background: rgba(255, 255, 255, 0.96);
-  color: var(--muted);
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(255, 255, 255, 0.35);
   transition:
     border-color 180ms ease,
-    background-color 180ms ease,
-    color 180ms ease;
+    background 180ms ease,
+    color 180ms ease,
+    transform 180ms ease;
+  cursor: default;
 }
 
 .skill-block i {
-  color: currentColor;
   font-size: 18px;
   line-height: 1;
+  color: currentColor;
 }
 
 .skill-block span {
-  max-width: 52px;
+  max-width: 50px;
   overflow: hidden;
   color: currentColor;
-  font-size: 9px;
-  font-weight: 500;
+  font-size: 8.5px;
+  font-weight: 600;
   letter-spacing: 0.04em;
   line-height: 1;
   text-align: center;
@@ -548,19 +698,20 @@ button {
 }
 
 .skill-block.lit {
-  border-color: color-mix(in srgb, var(--skill-color) 72%, white);
-  background: color-mix(in srgb, var(--skill-color) 16%, white);
+  border-color: color-mix(in srgb, var(--skill-color) 55%, transparent);
+  background: color-mix(in srgb, var(--skill-color) 14%, #101318);
   color: var(--skill-color);
+  transform: translateY(-1px);
 }
 
 .skill-line {
   position: relative;
-  width: 22px;
+  width: 18px;
   height: 2px;
-  flex: 0 0 22px;
+  flex: 0 0 18px;
   overflow: hidden;
   border-radius: 2px;
-  background: color-mix(in srgb, var(--skill-color) 18%, var(--line));
+  background: rgba(255, 255, 255, 0.06);
 }
 
 .skill-line span {
@@ -572,22 +723,11 @@ button {
   border-radius: inherit;
   background: var(--skill-color);
   transition: left 0.18s ease;
+  box-shadow: 0 0 6px var(--skill-color);
 }
 
 .skill-line.lit span {
   left: 0;
-}
-
-@media (prefers-color-scheme: dark) {
-  .skill-block {
-    background: var(--surface-soft);
-  }
-
-  .skill-block.lit {
-    border-color: color-mix(in srgb, var(--skill-color) 72%, #534ab7);
-    background: color-mix(in srgb, var(--skill-color) 18%, #101318);
-    color: var(--skill-color);
-  }
 }
 
 .skill-tags {

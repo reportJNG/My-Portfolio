@@ -39,7 +39,14 @@ export default function Hero() {
             target="_blank"
             rel="noreferrer"
           >
-            <span className="game-button-bg" aria-hidden="true" />
+            <span className="game-scene" aria-hidden="true">
+              <span className="game-sky" />
+              <span className="game-hills" />
+              <span className="game-ground" />
+              <span className="game-cube cube-one" />
+              <span className="game-cube cube-two" />
+              <span className="game-player" />
+            </span>
             <Gamepad2 size={18} />
             Game portfolio
             <ArrowUpRight size={17} />

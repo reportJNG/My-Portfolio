@@ -4,6 +4,7 @@ import {
   BriefcaseBusiness,
   Code2,
   Download,
+  Gamepad2,
   Home,
   Mail,
 } from "lucide-react";
@@ -37,6 +38,14 @@ export default function PortfolioPage() {
           document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
         },
       })),
+      {
+        label: "Game",
+        icon: createElement(Gamepad2, { size: 19 }),
+        className: "dock-game",
+        onClick: () => {
+          window.open("https://hamzaremali.vercel.app/", "_blank", "noreferrer");
+        },
+      },
       {
         label: "CV",
         icon: createElement(Download, { size: 19 }),

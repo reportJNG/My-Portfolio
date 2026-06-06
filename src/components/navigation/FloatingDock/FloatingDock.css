@@ -54,6 +54,45 @@
   box-shadow: 0 10px 34px rgba(103, 232, 249, 0.14);
 }
 
+.dock-item.dock-game {
+  overflow: hidden;
+  border-color: rgba(167, 243, 208, 0.34);
+  background:
+    radial-gradient(circle at 28% 24%, rgba(253, 230, 138, 0.4) 0 4px, transparent 5px),
+    linear-gradient(145deg, rgba(103, 232, 249, 0.2), rgba(167, 243, 208, 0.08)),
+    rgba(255, 255, 255, 0.065);
+  color: #f7f7f2;
+}
+
+.dock-item.dock-game::before {
+  position: absolute;
+  right: -8px;
+  bottom: -2px;
+  left: -8px;
+  height: 13px;
+  content: "";
+  background:
+    repeating-linear-gradient(
+      90deg,
+      rgba(253, 230, 138, 0.42) 0 7px,
+      rgba(167, 243, 208, 0.32) 7px 14px
+    );
+  opacity: 0.86;
+  animation: dock-game-ground 0.8s linear infinite;
+}
+
+.dock-item.dock-game .dock-icon {
+  position: relative;
+  z-index: 1;
+  filter: drop-shadow(0 0 8px rgba(103, 232, 249, 0.48));
+}
+
+.dock-item.dock-game:hover,
+.dock-item.dock-game:focus-visible {
+  border-color: rgba(167, 243, 208, 0.72);
+  box-shadow: 0 10px 34px rgba(167, 243, 208, 0.18);
+}
+
 .dock-icon {
   display: flex;
   align-items: center;
@@ -111,5 +150,15 @@
   .dock-panel,
   .dock-item {
     transition: none;
+  }
+}
+
+@keyframes dock-game-ground {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: -14px 0;
   }
 }
