@@ -74,7 +74,9 @@ export default function Work() {
   const remainingCount = works.length - visibleWorks.length;
 
   const showMoreProjects = () => {
-    setVisibleCount((count) => Math.min(count + PROJECT_BATCH_SIZE, works.length));
+    setVisibleCount((count) =>
+      Math.min(count + PROJECT_BATCH_SIZE, works.length),
+    );
   };
 
   return (
@@ -87,48 +89,52 @@ export default function Work() {
       </div>
 
       <div className="works-grid">
-        {visibleWorks.map(({ icon: Icon, color, title, type, description, year, link }, index) => {
-          const token = colors[color];
+        {visibleWorks.map(
+          (
+            { icon: Icon, color, title, type, description, year, link },
+            index,
+          ) => {
+            const token = colors[color];
 
-          return (
-            <article
-              className="work-card"
-              key={link}
-              style={{
-                "--work-color-bg": token.bg,
-                "--work-color-text": token.text,
-                "--work-delay": `${40 + index * 55}ms`,
-              }}
-            >
-              <div className="work-card-top">
-                <span className="work-icon-wrap" aria-hidden="true">
-                  <Icon size={16} strokeWidth={2} />
-                </span>
-                <span className="work-tag">{type}</span>
-              </div>
+            return (
+              <article
+                className="work-card"
+                key={link}
+                style={{
+                  "--work-color-bg": token.bg,
+                  "--work-color-text": token.text,
+                  "--work-delay": `${40 + index * 55}ms`,
+                }}
+              >
+                <div className="work-card-top">
+                  <span className="work-icon-wrap" aria-hidden="true">
+                    <Icon size={16} strokeWidth={2} />
+                  </span>
+                  <span className="work-tag">{type}</span>
+                </div>
 
-              <div className="work-card-body">
-                <h3>{title}</h3>
-                <p>{description}</p>
-              </div>
+                <div className="work-card-body">
+                  <h3>{title}</h3>
+                  <p>{description}</p>
+                </div>
 
-              <div className="work-card-bottom">
-                <span>{year}</span>
-                <a href={link} target="_blank" rel="noopener noreferrer">
-                  View
-                  <ArrowUpRight size={12} strokeWidth={2} />
-                </a>
-              </div>
-            </article>
-          );
-        })}
+                <div className="work-card-bottom">
+                  <span>{year}</span>
+                  <a href={link} target="_blank" rel="noopener noreferrer">
+                    View
+                    <ArrowUpRight size={12} strokeWidth={2} />
+                  </a>
+                </div>
+              </article>
+            );
+          },
+        )}
       </div>
 
       {remainingCount > 0 ? (
         <div className="works-more">
           <button type="button" onClick={showMoreProjects}>
             Show more
-            <span>{Math.min(PROJECT_BATCH_SIZE, remainingCount)} next</span>
           </button>
         </div>
       ) : null}

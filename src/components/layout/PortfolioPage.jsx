@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 
 import FloatingDock from "../navigation/FloatingDock/FloatingDock";
+import cv from "../../assets/cv_remali.pdf";
 import {
   AboutSection,
   ContactSection,
@@ -17,7 +18,6 @@ import {
   TrainingSection,
   WorkSection,
 } from "../sections";
-import { usePortfolioPdf } from "../../hooks/usePortfolioPdf";
 
 const navItems = [
   { label: "Home", href: "#home", icon: Home },
@@ -28,8 +28,6 @@ const navItems = [
 ];
 
 export default function PortfolioPage() {
-  const { pageRef, isExporting, exportPdf } = usePortfolioPdf();
-
   const dockItems = useMemo(
     () => [
       ...navItems.map(({ label, href, icon }) => ({
@@ -42,16 +40,21 @@ export default function PortfolioPage() {
       {
         label: "CV",
         icon: createElement(Download, { size: 19 }),
-        onClick: exportPdf,
+        onClick: () => {
+          const link = document.createElement("a");
+          link.href = cv;
+          link.download = "Hamza_Remali_CV.pdf";
+          link.click();
+        },
       },
     ],
-    [exportPdf],
+    [],
   );
 
   return (
     <>
-      <main ref={pageRef} aria-busy={isExporting}>
-        <HeroSection onDownload={exportPdf} />
+      <main>
+        <HeroSection />
         <AboutSection />
         <WorkSection />
         <SkillsSection />

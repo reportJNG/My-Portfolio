@@ -155,6 +155,65 @@ button {
   color: var(--yellow);
 }
 
+.button.game {
+  position: relative;
+  isolation: isolate;
+  min-width: 176px;
+  overflow: hidden;
+  border-color: rgba(103, 232, 249, 0.42);
+  background: #101318;
+  color: #f7f7f2;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.04),
+    0 10px 28px rgba(103, 232, 249, 0.08);
+}
+
+.button.game::before,
+.button.game::after,
+.game-button-bg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  content: "";
+}
+
+.button.game::before {
+  background:
+    linear-gradient(90deg, transparent, rgba(167, 243, 208, 0.22), transparent),
+    linear-gradient(135deg, rgba(103, 232, 249, 0.34), transparent 42%),
+    linear-gradient(315deg, rgba(253, 230, 138, 0.22), transparent 46%);
+  transform: translateX(-55%);
+  animation: game-scan 2.8s linear infinite;
+}
+
+.button.game::after {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.14) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.14) 1px, transparent 1px);
+  background-size: 10px 10px;
+  opacity: 0.18;
+  animation: game-grid 1.2s steps(8) infinite;
+}
+
+.game-button-bg {
+  background:
+    radial-gradient(circle at 20% 50%, rgba(103, 232, 249, 0.32) 0 3px, transparent 4px),
+    radial-gradient(circle at 74% 50%, rgba(253, 230, 138, 0.34) 0 3px, transparent 4px),
+    linear-gradient(90deg, rgba(103, 232, 249, 0.12), rgba(167, 243, 208, 0.08));
+  opacity: 0.85;
+}
+
+.button.game:hover {
+  border-color: rgba(167, 243, 208, 0.75);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08),
+    0 14px 36px rgba(103, 232, 249, 0.16);
+}
+
+.button.game svg {
+  filter: drop-shadow(0 0 7px rgba(103, 232, 249, 0.45));
+}
+
 .hero-card-wrap {
   width: min(100%, 360px);
   justify-self: end;
@@ -204,6 +263,26 @@ button {
   color: var(--muted);
   font-size: 0.88rem;
   font-weight: 720;
+}
+
+@keyframes game-scan {
+  0% {
+    transform: translateX(-65%);
+  }
+
+  100% {
+    transform: translateX(65%);
+  }
+}
+
+@keyframes game-grid {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 10px 10px;
+  }
 }
 
 .section {
