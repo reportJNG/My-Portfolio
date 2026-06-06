@@ -1,7 +1,6 @@
 import { ArrowUpRight, Download, Mail } from "lucide-react";
 
 import profile from "../../assets/me.png";
-import BlurText from "../effects/BlurText/BlurText";
 import GradientText from "../effects/GradientText/GradientText";
 import SpotlightCard from "../effects/SpotlightCard/SpotlightCard";
 import TiltedCard from "../effects/TiltedCard/TiltedCard";
@@ -12,21 +11,12 @@ export default function Hero({ onDownload }) {
     <section className="hero shell" id="home">
       <div className="hero-copy">
         <GradientText showBorder animationSpeed={9}>
-          Next.js developer / full-stack builder
+          Full-stack Next.js developer
         </GradientText>
 
-        <BlurText
-          text="I build the product, not just the screen."
-          className="hero-title"
-          delay={45}
-          direction="bottom"
-        />
-
         <p className="hero-lede">
-          I am Hamza Remali, a 20-year-old developer from Algeria. I build
-          dashboards, stores, admin panels, games, API tools, and full-stack apps
-          with Next.js, React, TypeScript, databases, auth, and the right tools
-          for the job.
+          Hamza Remali. Clean dashboards, stores, admin panels, API tools, and
+          full-stack products with real business flow.
         </p>
 
         <div className="hero-actions">
@@ -50,15 +40,9 @@ export default function Hero({ onDownload }) {
           imageSrc={profile}
           altText="Remali Hamza"
           captionText="Remali Hamza"
-          containerHeight="430px"
-          imageHeight="430px"
-          imageWidth="340px"
-          overlayContent={
-            <div className="profile-overlay">
-              <strong>Remali Hamza</strong>
-              <span>Next.js, React, APIs, databases, dashboards</span>
-            </div>
-          }
+          containerHeight="360px"
+          imageHeight="360px"
+          imageWidth="290px"
           displayOverlayContent
         />
       </div>

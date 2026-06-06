@@ -5,9 +5,8 @@ import SectionTitle from "../common/SectionTitle";
 export default function Contact() {
   return (
     <footer className="footer shell" id="contact">
-      <SectionTitle eyebrow="Contact" title="Need a website, dashboard, or app built properly?">
-        Send the idea, the messy version, or just the problem. I can help turn
-        it into a cleaner working product.
+      <SectionTitle eyebrow="Contact">
+        I will shape it into a cleaner working product.
       </SectionTitle>
 
       <div className="contact-grid">

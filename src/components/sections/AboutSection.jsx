@@ -7,9 +7,8 @@ import { facts } from "../../data/portfolioData";
 export default function About() {
   return (
     <section className="section shell" id="about">
-      <SectionTitle eyebrow="Profile" title="Real projects, real practice, real fixes.">
-        I learn by building complete apps, shipping them, breaking things,
-        fixing them, and making the next version cleaner.
+      <SectionTitle eyebrow="Profile">
+        Live projects, real flows, better versions.
       </SectionTitle>
 
       <div className="about-grid">
@@ -17,10 +16,10 @@ export default function About() {
           <ShieldCheck size={26} />
           <h3>How I work</h3>
           <p>
-            I like apps that make sense from the first click: clear data,
-            simple flows, useful dashboards, good forms, honest feedback, and
-            code that can grow after the first version. I work across frontend,
-            backend, auth, database structure, API connections, and deployment.
+            I build apps that make sense fast: clear data, simple flows, useful
+            dashboards, good forms, honest feedback, and code ready for the next
+            version. I work across UI, backend, auth, databases, APIs, and
+            deployment.
           </p>
         </SpotlightCard>
 

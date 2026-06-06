@@ -6,11 +6,12 @@
   justify-content: center;
   overflow: hidden;
   border-radius: 999px;
+  font-size: 0.82rem;
   font-weight: 700;
 }
 
 .animated-gradient-text.with-border {
-  padding: 0.38rem 0.75rem;
+  padding: 0.3rem 0.62rem;
 }
 
 .gradient-overlay {
