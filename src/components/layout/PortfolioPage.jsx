@@ -49,7 +49,7 @@ export default function PortfolioPage() {
         icon: createElement(Gamepad2, { size: 19 }),
         onClick: () => {
           window.open(
-            "https://mini-games-h.vercel.app/",
+            "https://hamzaremali.vercel.app/",
             "_blank",
             "noreferrer",
           );

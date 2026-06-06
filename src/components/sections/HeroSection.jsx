@@ -51,14 +51,14 @@ export default function HeroSection() {
             <Download size={17} />
           </a>
           <a
-            aria-label="Open mini games"
+            aria-label="Open portfolio game"
             className="group relative isolate inline-flex min-h-10 items-center justify-center gap-2 overflow-hidden rounded-lg border border-cyan-200/35 bg-cover bg-center bg-no-repeat px-3.5 text-[0.78rem] font-black uppercase leading-none tracking-[0.08em] text-white no-underline shadow-[0_10px_28px_rgba(35,211,238,0.16),inset_0_0_0_1px_rgba(255,255,255,0.16)] transition-[transform,border-color,box-shadow] duration-150 [font-family:'Trebuchet_MS',Inter,system-ui,sans-serif] [text-shadow:0_2px_8px_rgba(0,0,0,0.95)] before:absolute before:inset-0 before:-z-10 before:bg-[linear-gradient(90deg,rgba(0,0,0,0.72),rgba(0,0,0,0.34)_48%,rgba(0,0,0,0.68))] before:content-[''] hover:-translate-y-px hover:border-cyan-100/70 hover:shadow-[0_14px_34px_rgba(35,211,238,0.22),inset_0_0_0_1px_rgba(255,255,255,0.2)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-100 max-md:w-full"
-            href="https://mini-games-h.vercel.app/"
+            href="https://hamzaremali.vercel.app/"
             rel="noopener noreferrer"
             style={{ backgroundImage: `url(${bgButton})` }}
             target="_blank"
           >
-            <span className="relative z-10">Game website</span>
+            <span className="relative z-10">Portfolio game</span>
             <span
               className="relative z-10 inline-flex h-[23px] w-[23px] items-center justify-center rounded-md border border-white/25 bg-black/35 text-cyan-100 shadow-[inset_0_1px_0_rgba(255,255,255,0.16)]"
               aria-hidden="true"
