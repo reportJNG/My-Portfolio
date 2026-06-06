@@ -2,7 +2,7 @@ import { createElement, useMemo } from "react";
 import {
   BriefcaseBusiness,
   Download,
-  ExternalLink,
+  Gamepad2,
   Home,
   Mail,
 } from "lucide-react";
@@ -45,10 +45,14 @@ export default function PortfolioPage() {
         },
       },
       {
-        label: "Site",
-        icon: createElement(ExternalLink, { size: 19 }),
+        label: "Portfolio Game",
+        icon: createElement(Gamepad2, { size: 19 }),
         onClick: () => {
-          window.open("https://hamzaremali.vercel.app/", "_blank", "noreferrer");
+          window.open(
+            "https://mini-games-h.vercel.app/",
+            "_blank",
+            "noreferrer",
+          );
         },
       },
     ],
