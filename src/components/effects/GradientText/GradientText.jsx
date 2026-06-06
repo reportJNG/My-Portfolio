@@ -5,7 +5,6 @@ import {
   useAnimationFrame,
   useTransform,
 } from "motion/react";
-import "./GradientText.css";
 
 export default function GradientText({
   children,
@@ -95,18 +94,26 @@ export default function GradientText({
 
   return (
     <Motion.div
-      className={`animated-gradient-text ${showBorder ? "with-border" : ""} ${className}`.trim()}
+      className={[
+        "relative inline-flex max-w-fit items-center justify-center overflow-hidden rounded-full text-[0.82rem] font-bold",
+        showBorder ? "px-[0.62rem] py-[0.3rem]" : "",
+        className,
+      ]
+        .filter(Boolean)
+        .join(" ")}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
       {showBorder && (
         <Motion.div
-          className="gradient-overlay"
+          className="pointer-events-none absolute inset-0 z-0 rounded-[inherit]"
           style={{ ...gradientStyle, backgroundPosition }}
-        />
+        >
+          <span className="absolute left-1/2 top-1/2 -z-10 h-[calc(100%-2px)] w-[calc(100%-2px)] -translate-x-1/2 -translate-y-1/2 rounded-[inherit] bg-[#090b0f]" />
+        </Motion.div>
       )}
       <Motion.div
-        className="text-content"
+        className="relative z-10 inline-block bg-clip-text text-transparent [-webkit-background-clip:text]"
         style={{ ...gradientStyle, backgroundPosition }}
       >
         {children}

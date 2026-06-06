@@ -1,5 +1,4 @@
 import { useEffect, useRef } from "react";
-import "./SpotlightCard.css";
 
 const SpotlightCard = ({
   children,
@@ -40,7 +39,16 @@ const SpotlightCard = ({
     <div
       ref={divRef}
       onPointerMove={handleMouseMove}
-      className={`card-spotlight ${className}`.trim()}
+      className={[
+        "relative overflow-hidden rounded-lg border border-white/10 bg-[#101318] transition-[border-color,background-color,transform] duration-200",
+        "before:pointer-events-none before:absolute before:inset-0 before:bg-[radial-gradient(circle_at_var(--mouse-x)_var(--mouse-y),var(--spotlight-color),transparent_72%)] before:opacity-0 before:transition-opacity before:duration-300",
+        "hover:border-white/20 hover:before:opacity-100 focus-within:before:opacity-100",
+        "[--mouse-x:50%] [--mouse-y:50%] [--spotlight-color:rgba(255,255,255,0.16)]",
+        "[&>*]:relative [&>*]:z-10",
+        className,
+      ]
+        .filter(Boolean)
+        .join(" ")}
     >
       {children}
     </div>

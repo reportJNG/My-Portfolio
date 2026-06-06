@@ -85,47 +85,62 @@ export default function Work() {
   };
 
   return (
-    <section className="section shell works-section" id="work">
-      <div className="works-header">
+    <section
+      className="mx-auto w-[min(calc(100%-28px),1080px)] py-16 max-md:w-[min(calc(100%-24px),1080px)] max-md:py-[58px]"
+      id="work"
+    >
+      <div className="mb-3 flex items-center justify-between gap-4 text-[11px] font-bold uppercase leading-none tracking-[0.08em] text-[#9da6b4] [&_span:last-child]:normal-case [&_span:last-child]:tracking-normal">
         <span>Selected works</span>
         <span>
           {visibleWorks.length} of {works.length} projects
         </span>
       </div>
 
-      <div className="works-grid">
+      <div className="grid grid-cols-3 gap-2 max-lg:grid-cols-2 max-md:grid-cols-1">
         {visibleWorks.map(
           (
             { icon: Icon, color, title, type, description, year, link },
-            index,
           ) => {
             const token = colors[color];
 
             return (
               <article
-                className="work-card"
+                className="flex min-h-[170px] flex-col gap-3 rounded-xl border border-white/10 bg-[#101318] p-4 transition-[transform,border-color,background-color] duration-200 hover:-translate-y-0.5 hover:border-white/20 hover:bg-[#151922]"
                 key={link}
                 style={{
                   "--work-color-bg": token.bg,
                   "--work-color-text": token.text,
-                  "--work-delay": `${40 + index * 55}ms`,
                 }}
               >
-                <div className="work-card-top">
-                  <span className="work-icon-wrap" aria-hidden="true">
+                <div className="flex items-center justify-between gap-3">
+                  <span
+                    className="inline-flex h-8 w-8 flex-none items-center justify-center rounded-lg bg-[var(--work-color-bg)] text-[var(--work-color-text)]"
+                    aria-hidden="true"
+                  >
                     <Icon size={16} strokeWidth={2} />
                   </span>
-                  <span className="work-tag">{type}</span>
+                  <span className="inline-flex max-w-full items-center whitespace-nowrap rounded-full border border-[color:color-mix(in_srgb,var(--work-color-text)_24%,transparent)] bg-[var(--work-color-bg)] px-[7px] py-1 text-[10px] font-bold leading-none text-[var(--work-color-text)]">
+                    {type}
+                  </span>
                 </div>
 
-                <div className="work-card-body">
-                  <h3>{title}</h3>
-                  <p>{description}</p>
+                <div className="grid gap-1.5">
+                  <h3 className="m-0 text-[13px] font-semibold leading-[1.25] tracking-normal text-[#f7f7f2]">
+                    {title}
+                  </h3>
+                  <p className="m-0 min-h-[33px] overflow-hidden text-[11px] font-medium leading-normal text-[#9da6b4] [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:2]">
+                    {description}
+                  </p>
                 </div>
 
-                <div className="work-card-bottom">
-                  <span>{year}</span>
-                  <a href={link} target="_blank" rel="noopener noreferrer">
+                <div className="mt-auto flex items-center justify-between gap-3 border-t border-white/10 pt-3">
+                  <span className="text-[10px] font-bold leading-none text-[#9da6b4]">{year}</span>
+                  <a
+                    className="inline-flex min-h-6 items-center justify-center gap-1 rounded-[5px] border border-white/10 bg-white/[0.035] px-2 py-1 text-[10px] font-medium leading-none text-[#f7f7f2] no-underline transition-[border-color,background-color] duration-200 hover:border-white/20 hover:bg-white/[0.065]"
+                    href={link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     View
                     <ArrowUpRight size={12} strokeWidth={2} />
                   </a>
@@ -137,247 +152,28 @@ export default function Work() {
       </div>
 
       {remainingCount > 0 || visibleCount > PROJECT_BATCH_SIZE ? (
-        <div className="works-more">
+        <div className="mt-3.5 flex justify-center gap-2">
           {remainingCount > 0 ? (
-            <button type="button" onClick={showMoreProjects}>
+            <button
+              className="inline-flex min-h-[34px] cursor-pointer items-center justify-center gap-2 rounded-[7px] border border-white/10 bg-white/[0.035] px-3 text-[11px] font-bold leading-none text-[#f7f7f2] transition-[transform,border-color,background-color] duration-200 hover:-translate-y-px hover:border-white/20 hover:bg-white/[0.065]"
+              type="button"
+              onClick={showMoreProjects}
+            >
               Show more
             </button>
           ) : null}
 
           {visibleCount > PROJECT_BATCH_SIZE ? (
-            <button type="button" onClick={showLessProjects}>
+            <button
+              className="inline-flex min-h-[34px] cursor-pointer items-center justify-center gap-2 rounded-[7px] border border-white/10 bg-white/[0.035] px-3 text-[11px] font-bold leading-none text-[#f7f7f2] transition-[transform,border-color,background-color] duration-200 hover:-translate-y-px hover:border-white/20 hover:bg-white/[0.065]"
+              type="button"
+              onClick={showLessProjects}
+            >
               Show less
             </button>
           ) : null}
         </div>
       ) : null}
-
-      <style>{`
-        .works-section {
-          padding: 4rem 0;
-        }
-
-        .works-header {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          gap: 16px;
-          margin-bottom: 12px;
-          color: var(--muted);
-          font-size: 11px;
-          font-weight: 700;
-          letter-spacing: 0.08em;
-          line-height: 1;
-          text-transform: uppercase;
-        }
-
-        .works-header span:last-child {
-          letter-spacing: 0;
-          text-transform: none;
-        }
-
-        .works-grid {
-          display: grid;
-          grid-template-columns: repeat(3, minmax(0, 1fr));
-          gap: 8px;
-        }
-
-        .work-card {
-          display: flex;
-          min-height: 170px;
-          flex-direction: column;
-          gap: 12px;
-          padding: 16px;
-          border: 1px solid var(--line);
-          border-radius: 12px;
-          background: var(--surface);
-          opacity: 0;
-          transform: translateY(12px);
-          animation: work-card-enter 680ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
-          animation-delay: var(--work-delay);
-          transition:
-            transform 0.18s ease,
-            border-color 0.18s ease,
-            background-color 0.18s ease;
-        }
-
-        .work-card:hover {
-          animation-name: none;
-          border-color: var(--line-strong);
-          background: var(--surface-2);
-          opacity: 1;
-          transform: translateY(-2px);
-        }
-
-        .work-card-top,
-        .work-card-bottom {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          gap: 12px;
-        }
-
-        .work-icon-wrap {
-          display: inline-flex;
-          width: 32px;
-          height: 32px;
-          flex: 0 0 auto;
-          align-items: center;
-          justify-content: center;
-          border-radius: 8px;
-          background: var(--work-color-bg);
-          color: var(--work-color-text);
-        }
-
-        .work-tag {
-          display: inline-flex;
-          max-width: 100%;
-          align-items: center;
-          padding: 4px 7px;
-          border: 1px solid color-mix(in srgb, var(--work-color-text) 24%, transparent);
-          border-radius: 999px;
-          background: var(--work-color-bg);
-          color: var(--work-color-text);
-          font-size: 10px;
-          font-weight: 700;
-          line-height: 1;
-          white-space: nowrap;
-        }
-
-        .work-card-body {
-          display: grid;
-          gap: 6px;
-        }
-
-        .work-card h3 {
-          margin: 0;
-          color: var(--text);
-          font-size: 13px;
-          font-weight: 600;
-          letter-spacing: 0;
-          line-height: 1.25;
-        }
-
-        .work-card p {
-          display: -webkit-box;
-          min-height: 33px;
-          margin: 0;
-          overflow: hidden;
-          -webkit-box-orient: vertical;
-          -webkit-line-clamp: 2;
-          color: var(--muted);
-          font-size: 11px;
-          font-weight: 500;
-          line-height: 1.5;
-        }
-
-        .work-card-bottom {
-          margin-top: auto;
-          padding-top: 12px;
-          border-top: 0.5px solid var(--line);
-        }
-
-        .work-card-bottom span {
-          color: var(--muted);
-          font-size: 10px;
-          font-weight: 700;
-          line-height: 1;
-        }
-
-        .work-card-bottom a {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          gap: 4px;
-          min-height: 24px;
-          padding: 4px 8px;
-          border: 1px solid var(--line);
-          border-radius: 5px;
-          background: rgba(255, 255, 255, 0.035);
-          color: var(--text);
-          font-size: 10px;
-          font-weight: 500;
-          line-height: 1;
-          text-decoration: none;
-          transition:
-            border-color 0.18s ease,
-            background-color 0.18s ease;
-        }
-
-        .work-card-bottom a:hover {
-          border-color: var(--line-strong);
-          background: rgba(255, 255, 255, 0.065);
-        }
-
-        .works-more {
-          display: flex;
-          justify-content: center;
-          margin-top: 14px;
-        }
-
-        .works-more button {
-          display: inline-flex;
-          min-height: 34px;
-          align-items: center;
-          justify-content: center;
-          gap: 8px;
-          padding: 0 12px;
-          border: 1px solid var(--line);
-          border-radius: 7px;
-          background: rgba(255, 255, 255, 0.035);
-          color: var(--text);
-          cursor: pointer;
-          font-size: 11px;
-          font-weight: 700;
-          line-height: 1;
-          transition:
-            transform 0.18s ease,
-            border-color 0.18s ease,
-            background-color 0.18s ease;
-        }
-
-        .works-more button:hover {
-          border-color: var(--line-strong);
-          background: rgba(255, 255, 255, 0.065);
-          transform: translateY(-1px);
-        }
-
-        .works-more span {
-          color: var(--muted);
-          font-size: 10px;
-          font-weight: 700;
-        }
-
-        @keyframes work-card-enter {
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        @media (max-width: 980px) {
-          .works-grid {
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-          }
-        }
-
-        @media (max-width: 760px) {
-          .works-section {
-            padding: 58px 0;
-          }
-
-          .works-grid {
-            grid-template-columns: 1fr;
-          }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-          .work-card {
-            animation-duration: 0.01ms;
-            animation-delay: 0ms;
-          }
-        }
-      `}</style>
     </section>
   );
 }

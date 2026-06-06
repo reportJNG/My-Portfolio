@@ -1,6 +1,5 @@
 import { useRef, useState } from "react";
 import { motion as Motion, useMotionValue, useSpring } from "motion/react";
-import "./TiltedCard.css";
 
 const springValues = {
   damping: 32,
@@ -77,14 +76,14 @@ export default function TiltedCard({
   return (
     <figure
       ref={ref}
-      className="tilted-card-figure"
+      className="relative m-0 flex h-full w-full items-center justify-center [contain:layout_paint] [perspective:800px] max-md:mt-6 max-md:[perspective:none]"
       style={{ height: containerHeight, width: containerWidth }}
       onMouseMove={handleMouse}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
       <Motion.div
-        className="tilted-card-inner"
+        className="relative max-w-full overflow-hidden rounded-lg border border-white/10 bg-[#101318] shadow-[0_22px_70px_rgba(0,0,0,0.3)] will-change-transform [transform-style:preserve-3d] max-md:!h-[min(390px,110vw)] max-md:!w-full max-md:!max-w-full max-md:!transform-none"
         style={{
           width: imageWidth,
           height: imageHeight,
@@ -96,17 +95,19 @@ export default function TiltedCard({
         <Motion.img
           src={imageSrc}
           alt={altText}
-          className="tilted-card-img"
+          className="absolute inset-0 block object-cover [transform:translateZ(0)] max-md:!h-[min(390px,110vw)] max-md:!w-full max-md:!max-w-full"
           style={{ width: imageWidth, height: imageHeight }}
         />
         {displayOverlayContent && overlayContent ? (
-          <Motion.div className="tilted-card-overlay">{overlayContent}</Motion.div>
+          <Motion.div className="absolute inset-x-3.5 bottom-3.5 z-20 [transform:translateZ(32px)]">
+            {overlayContent}
+          </Motion.div>
         ) : null}
       </Motion.div>
 
       {showTooltip ? (
         <Motion.figcaption
-          className="tilted-card-caption"
+          className="pointer-events-none absolute left-0 top-0 z-30 rounded-full border border-white/10 bg-slate-50 px-2.5 py-1 text-[0.72rem] font-bold text-[#0b0d10]"
           style={{ x, y, opacity, rotate: rotateFigcaption }}
         >
           {captionText}

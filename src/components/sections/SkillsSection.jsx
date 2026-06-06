@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useState } from "react";
 import SectionTitle from "../common/SectionTitle";
 import SpotlightCard from "../effects/SpotlightCard/SpotlightCard";
 import { languages } from "../../data/portfolioData";
@@ -17,7 +17,7 @@ const skillColors = {
   "C++": "#00599C",
   Pascal: "#E53935",
   React: "#61DAFB",
-  "Next.js": "#FFFFFF",
+  "Next.js": "#E2E8F0",
   "Node.js": "#5FA04E",
   Express: "#D8DEE8",
   MongoDB: "#47A248",
@@ -25,7 +25,7 @@ const skillColors = {
   MySQL: "#4479A1",
   Python: "#3776AB",
   Java: "#F89820",
-  Lua: "#2C2D72",
+  Lua: "#6E7BB5",
   Git: "#F05032",
   Linux: "#FCC624",
   Docker: "#2496ED",
@@ -35,38 +35,35 @@ const skillColors = {
   "Tailwind CSS": "#06B6D4",
   Bootstrap: "#7952B3",
   Vite: "#646CFF",
-  Vercel: "#FFFFFF",
+  Vercel: "#E2E8F0",
 };
 
 export default function Skills() {
-  const blockRefs = useRef([]);
-  const lineRefs = useRef([]);
+  const [activeBlock, setActiveBlock] = useState(0);
+  const [activeLine, setActiveLine] = useState(null);
 
   useEffect(() => {
     const timeouts = new Set();
     let active = 0;
+
     const setManagedTimeout = (callback, delay) => {
       const timeout = window.setTimeout(() => {
         timeouts.delete(timeout);
         callback();
       }, delay);
-
       timeouts.add(timeout);
     };
 
     const tick = () => {
-      const block = blockRefs.current[active];
-      const line = lineRefs.current[active];
-
-      block?.classList.add("lit");
+      setActiveBlock(active);
+      setActiveLine(null);
 
       setManagedTimeout(() => {
-        line?.classList.add("lit");
+        setActiveLine(active);
       }, LINE_DELAY);
 
       setManagedTimeout(() => {
-        block?.classList.remove("lit");
-        line?.classList.remove("lit");
+        setActiveLine(null);
       }, LIT_DURATION);
 
       active = (active + 1) % languages.length;
@@ -77,50 +74,99 @@ export default function Skills() {
 
     return () => {
       window.clearInterval(interval);
-      timeouts.forEach((timeout) => window.clearTimeout(timeout));
+      timeouts.forEach((t) => window.clearTimeout(t));
       timeouts.clear();
     };
   }, []);
 
   return (
-    <section className="section shell" id="skills">
+    <section
+      className="mx-auto w-[min(calc(100%-28px),1080px)] pt-[70px] max-md:w-[min(calc(100%-24px),1080px)] max-md:pt-[58px]"
+      id="skills"
+    >
       <SectionTitle eyebrow="Stack">
         UI, server, data, auth, APIs, styling, deployment.
       </SectionTitle>
 
-      <div className="skills-grid">
-        <SpotlightCard className="skill-panel" spotlightColor="rgba(83, 74, 183, 0.14)">
-          <h3>Languages</h3>
-          <div className="skills-chain" aria-label="Technology skills">
-            {languages.map(([name, years, iconClass], index) => (
-              <div
-                className="skill-hop"
-                key={name}
-                style={{ "--skill-color": skillColors[name] ?? "#AFA9EC" }}
-              >
+      <div className="grid grid-cols-1">
+        <SpotlightCard
+          className="p-[22px] max-[420px]:p-[16px]"
+          spotlightColor="rgba(83, 74, 183, 0.12)"
+        >
+          {/* Panel header */}
+          <div className="mb-5 flex items-center gap-3">
+            <span className="text-[10px] font-bold uppercase tracking-[0.12em] text-white/30">
+              Languages &amp; tools
+            </span>
+            <div className="h-px flex-1 bg-white/[0.07]" />
+            <span className="text-[10px] font-bold tabular-nums text-white/20">
+              {languages.length}
+            </span>
+          </div>
+
+          {/* Inner container */}
+          <div className="rounded-[10px] border border-white/[0.05] bg-white/[0.02] p-4">
+            <div
+              className="flex flex-wrap items-center gap-y-[10px]"
+              aria-label="Technology skills"
+            >
+              {languages.map(([name, years, iconClass], index) => (
                 <div
-                  className="skill-block"
-                  title={`${name} - ${years}`}
-                  ref={(node) => {
-                    blockRefs.current[index] = node;
-                  }}
+                  className="inline-flex items-center"
+                  key={name}
+                  style={{ "--skill-color": skillColors[name] ?? "#AFA9EC" }}
                 >
-                  <i className={iconClass} aria-hidden="true" />
-                  <span>{name}</span>
-                </div>
-                {index < languages.length - 1 && (
+                  {/* Skill block */}
                   <div
-                    className="skill-line"
-                    aria-hidden="true"
-                    ref={(node) => {
-                      lineRefs.current[index] = node;
-                    }}
+                    className={[
+                      "group relative inline-flex h-[50px] w-[54px] flex-none cursor-default flex-col items-center justify-center gap-[5px] rounded-[10px] border transition-[transform,border-color,background-color,color] duration-[180ms] ease-out",
+                      activeBlock === index
+                        ? "-translate-y-[2px] border-[color:color-mix(in_srgb,var(--skill-color)_40%,transparent)] bg-[color-mix(in_srgb,var(--skill-color)_11%,#0d1014)] text-[var(--skill-color)]"
+                        : "border-white/[0.07] bg-white/[0.03] text-white/[0.22]",
+                    ]
+                      .filter(Boolean)
+                      .join(" ")}
+                    title={`${name}${years ? ` · ${years}` : ""}`}
                   >
-                    <span />
+                    <i
+                      className={`${iconClass} text-[17px] leading-none text-current`}
+                      aria-hidden="true"
+                    />
+                    <span className="max-w-[48px] overflow-hidden text-ellipsis whitespace-nowrap text-center text-[8px] font-[600] leading-none tracking-[0.05em] text-current">
+                      {name}
+                    </span>
+
+                    {/* Lit glow dot — top-right corner */}
+                    {activeBlock === index && (
+                      <span className="absolute right-[5px] top-[5px] h-[4px] w-[4px] rounded-full bg-[var(--skill-color)] opacity-70" />
+                    )}
                   </div>
-                )}
-              </div>
-            ))}
+
+                  {/* Connector line */}
+                  {index < languages.length - 1 && (
+                    <div
+                      className="relative h-[1.5px] w-[16px] flex-none overflow-hidden rounded-full bg-white/[0.05]"
+                      aria-hidden="true"
+                    >
+                      <span
+                        className={[
+                          "absolute top-0 h-full w-full rounded-[inherit] bg-[var(--skill-color)] transition-[left] duration-[180ms] ease-out",
+                          activeLine === index ? "left-0" : "left-[-100%]",
+                        ]
+                          .filter(Boolean)
+                          .join(" ")}
+                        style={{
+                          boxShadow:
+                            activeLine === index
+                              ? "0 0 5px var(--skill-color)"
+                              : "none",
+                        }}
+                      />
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
           </div>
         </SpotlightCard>
       </div>

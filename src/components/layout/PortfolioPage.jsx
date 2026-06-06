@@ -41,7 +41,6 @@ export default function PortfolioPage() {
       {
         label: "Game",
         icon: createElement(Gamepad2, { size: 19 }),
-        className: "dock-game",
         onClick: () => {
           window.open("https://hamzaremali.vercel.app/", "_blank", "noreferrer");
         },
@@ -62,6 +61,14 @@ export default function PortfolioPage() {
 
   return (
     <>
+      <div
+        className="pointer-events-none fixed inset-0 -z-20 bg-[#090b0f] bg-[linear-gradient(180deg,rgba(103,232,249,0.065),transparent_360px),radial-gradient(circle_at_18%_0%,rgba(167,243,208,0.1),transparent_280px),linear-gradient(145deg,rgba(253,230,138,0.045),transparent_36%)]"
+        aria-hidden="true"
+      />
+      <div
+        className="pointer-events-none fixed inset-0 -z-10 bg-[linear-gradient(rgba(255,255,255,0.035)_1px,transparent_1px)] bg-[length:100%_48px] [mask-image:linear-gradient(to_bottom,black_0,transparent_78%)]"
+        aria-hidden="true"
+      />
       <main>
         <HeroSection />
         <AboutSection />
