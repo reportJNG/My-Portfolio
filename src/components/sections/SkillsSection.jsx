@@ -73,6 +73,8 @@ export default function Skills() {
       // Wire fires mid-active
       if (wire) {
         after(() => {
+          wire.classList.remove("sk-firing");
+          void wire.offsetWidth;
           wire.classList.add("sk-firing");
           after(() => wire.classList.remove("sk-firing"), WIRE_DUR);
         }, WIRE_DELAY);
@@ -115,62 +117,45 @@ export default function Skills() {
           className="p-[22px] max-[420px]:p-[16px]"
           spotlightColor="rgba(83, 74, 183, 0.12)"
         >
-          {/* Header row */}
-          <div className="mb-5 flex items-center gap-3">
-            <span className="text-[10px] font-bold uppercase tracking-[0.12em] text-white/25">
-              Languages &amp; tools
-            </span>
-            <div className="h-px flex-1 bg-white/[0.06]" />
-            <span className="text-[10px] font-semibold tabular-nums text-white/[0.18]">
-              {languages.length}
-            </span>
-          </div>
-
-          {/* Chain container */}
-          <div className="rounded-[11px] border border-white/[0.05] bg-white/[0.02] p-[18px]">
-            <div
-              className="flex flex-wrap items-center gap-y-[10px]"
-              aria-label="Technology skills"
-            >
-              {languages.map(([name, years, iconClass], index) => (
+          <div
+            className="flex flex-wrap items-center gap-y-[10px]"
+            aria-label="Technology skills"
+          >
+            {languages.map(([name, years, iconClass], index) => (
+              <div
+                className="inline-flex items-center"
+                key={name}
+                style={{ "--skill-color": skillColors[name] ?? "#AFA9EC" }}
+              >
+                {/* Skill block */}
                 <div
-                  className="inline-flex items-center"
-                  key={name}
-                  style={{ "--skill-color": skillColors[name] ?? "#AFA9EC" }}
+                  className="skill-block"
+                  title={`${name}${years ? ` · ${years}` : ""}`}
+                  ref={(n) => {
+                    boxRefs.current[index] = n;
+                  }}
                 >
-                  {/* Skill block */}
+                  <div className="skill-ripple" />
+                  <div className="skill-shine" />
+                  <div className="skill-dot" />
+                  <i className={`${iconClass} skill-icon`} aria-hidden="true" />
+                  <span className="skill-label">{name}</span>
+                </div>
+
+                {/* Connector wire */}
+                {index < languages.length - 1 && (
                   <div
-                    className="skill-block"
-                    title={`${name}${years ? ` · ${years}` : ""}`}
+                    className="skill-wire"
+                    aria-hidden="true"
                     ref={(n) => {
-                      boxRefs.current[index] = n;
+                      wireRefs.current[index] = n;
                     }}
                   >
-                    <div className="skill-ripple" />
-                    <div className="skill-shine" />
-                    <div className="skill-dot" />
-                    <i
-                      className={`${iconClass} skill-icon`}
-                      aria-hidden="true"
-                    />
-                    <span className="skill-label">{name}</span>
+                    <span className="skill-wire-fill" />
                   </div>
-
-                  {/* Connector wire */}
-                  {index < languages.length - 1 && (
-                    <div
-                      className="skill-wire"
-                      aria-hidden="true"
-                      ref={(n) => {
-                        wireRefs.current[index] = n;
-                      }}
-                    >
-                      <span className="skill-wire-fill" />
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
+                )}
+              </div>
+            ))}
           </div>
         </SpotlightCard>
       </div>
@@ -255,18 +240,24 @@ export default function Skills() {
 
         .skill-wire {
           width: 18px; height: 2px; flex: 0 0 18px;
-          border-radius: 2px; background: rgba(255,255,255,0.05);
+          border-radius: 2px; background: rgba(255,255,255,0.065);
           position: relative; overflow: hidden;
+          transition: background 0.18s ease, box-shadow 0.18s ease;
         }
         .skill-wire-fill {
           position: absolute; top: 0; left: 0;
           height: 100%; width: 0%;
           border-radius: inherit;
           background: var(--skill-color);
+          opacity: 0;
+          box-shadow: 0 0 8px var(--skill-color);
+        }
+        .sk-firing {
+          background: color-mix(in srgb, var(--skill-color) 18%, rgba(255,255,255,0.08));
+          box-shadow: 0 0 10px color-mix(in srgb, var(--skill-color) 45%, transparent);
         }
         .sk-firing .skill-wire-fill {
           animation: sk-wire 0.28s cubic-bezier(.4,0,.2,1) forwards;
-          box-shadow: 0 0 5px var(--skill-color);
         }
 
         @keyframes sk-ripple-in {
@@ -284,7 +275,8 @@ export default function Skills() {
           100% { opacity: 0; left: 120%; }
         }
         @keyframes sk-wire {
-          0%   { width: 0%;   left: 0; opacity: 1; }
+          0%   { width: 0%;   left: 0; opacity: 0; }
+          20%  { opacity: 1; }
           100% { width: 100%; left: 0; opacity: 1; }
         }
 
