@@ -1,13 +1,13 @@
 # Remali Hamza Portfolio
 
-A polished one-page developer portfolio for Remali Hamza, built with React, Vite, Motion, Lucide icons, Devicon skill icons, and a lazy-loaded PDF export flow.
+A polished one-page developer portfolio for Remali Hamza, built with React, Vite, Motion, Lucide icons, and Devicon skill icons.
 
 ## Highlights
 
 - Responsive portfolio sections for profile, work, skills, training, and contact.
 - Animated hero headline, profile card, spotlight cards, and floating dock navigation.
 - Structured project inventory powered by a single data file.
-- Downloadable CV/PDF export loaded only when the user requests it.
+- Downloadable CV and external project links.
 - Modern dependency set with Vite 8, ESLint 10, React 19, and zero npm audit vulnerabilities.
 
 ## Tech Stack
@@ -16,7 +16,6 @@ A polished one-page developer portfolio for Remali Hamza, built with React, Vite
 - Vite 8
 - Motion
 - Lucide React
-- html2pdf.js
 - ESLint flat config
 
 ## Project Structure
@@ -31,7 +30,6 @@ src/
     navigation/            Floating dock navigation
     sections/              Portfolio page sections
   data/                    Portfolio content and project inventory
-  hooks/                   Reusable app hooks
   App.jsx                  Thin app entry component
   main.jsx                 React mount point
   index.css                Global theme and responsive layout styles
@@ -65,9 +63,8 @@ Most portfolio content lives in `src/data/portfolioData.js`:
 - `facts` controls the profile facts.
 - `projects` controls the featured and compact work sections.
 - `languages` controls the Devicon language grid.
-- `skills` controls the skill tags.
 
-The first 9 projects are shown as featured cards. The rest are shown in the compact project list.
+Projects are shown in batches of 6, with Show more and Show less controls.
 
 ## Quality Checks
 

@@ -21,7 +21,7 @@ import {
 } from "lucide-react";
 
 import { projects } from "../../data/portfolioData";
-
+import GradientText from "../effects/GradientText/GradientText";
 const PROJECT_BATCH_SIZE = 6;
 
 const colors = {
@@ -81,7 +81,9 @@ export default function Work() {
 
   const showLessProjects = () => {
     setVisibleCount(PROJECT_BATCH_SIZE);
-    document.querySelector("#work")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    document
+      .querySelector("#work")
+      ?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
   return (
@@ -90,7 +92,10 @@ export default function Work() {
       id="work"
     >
       <div className="mb-3 flex items-center justify-between gap-4 text-[11px] font-bold uppercase leading-none tracking-[0.08em] text-[#9da6b4] [&_span:last-child]:normal-case [&_span:last-child]:tracking-normal">
-        <span>Selected works</span>
+        <GradientText showBorder animationSpeed={9}>
+          Work{" "}
+        </GradientText>
+        <span>Selected </span>
         <span>
           {visibleWorks.length} of {works.length} projects
         </span>
@@ -98,9 +103,7 @@ export default function Work() {
 
       <div className="grid grid-cols-3 gap-2 max-lg:grid-cols-2 max-md:grid-cols-1">
         {visibleWorks.map(
-          (
-            { icon: Icon, color, title, type, description, year, link },
-          ) => {
+          ({ icon: Icon, color, title, type, description, year, link }) => {
             const token = colors[color];
 
             return (
@@ -134,7 +137,9 @@ export default function Work() {
                 </div>
 
                 <div className="mt-auto flex items-center justify-between gap-3 border-t border-white/10 pt-3">
-                  <span className="text-[10px] font-bold leading-none text-[#9da6b4]">{year}</span>
+                  <span className="text-[10px] font-bold leading-none text-[#9da6b4]">
+                    {year}
+                  </span>
                   <a
                     className="inline-flex min-h-6 items-center justify-center gap-1 rounded-[5px] border border-white/10 bg-white/[0.035] px-2 py-1 text-[10px] font-medium leading-none text-[#f7f7f2] no-underline transition-[border-color,background-color] duration-200 hover:border-white/20 hover:bg-white/[0.065]"
                     href={link}
